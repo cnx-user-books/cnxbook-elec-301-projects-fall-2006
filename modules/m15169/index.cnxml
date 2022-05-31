@@ -1,0 +1,43 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Procedure for Echo Removal by Deconvolution</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>7d4e17e5-6d20-4e07-bda5-37426ff6210c</md:uuid>
+</metadata>
+<content>
+<section id="id6407504">
+<title>Procedure for Echo Removal by Deconvolution</title>
+<section id="id6509957">
+
+<para id="id6408803">1. Generate a Gaussian white noise input
+signal in matlab like the one below:</para>
+<figure id="id6487874">
+<media id="idm4708624" alt=""><image src="../../media/Graphic1-aab2.jpg" mime-type="image/jpeg"/></media>
+</figure>
+<para id="id5940675">A sample of the signal can be heard in this
+file: <media id="idm6763936" alt=""><audio src="White_Gaussian_Noise.wav" mime-type="audio/x-wav"/></media></para>
+<para id="id6345987">2. Record a test speech signal in a low-echo
+environment like a music practice room. The time domain version of
+a speech signal where the speaker is counting to ten can be seen
+below:</para>
+<figure id="id5860939">
+<media id="idm6840032" alt=""><image src="../../media/Graphic2-a16a.jpg" mime-type="image/jpeg"/></media>
+</figure>
+<para id="id5891440">The speech recording can be heard in this
+file: <media id="idm630880" alt=""><audio src="original.wav" mime-type="audio/x-wav"/></media></para>
+<para id="id6533905">3. Record ambient noise characteristics by
+having a microphone run in the room you want to use while nothing
+else is going on.</para>
+<para id="id6483699">4. Play the Gaussian white noise signal in the
+room and record the room’s response.</para>
+<para id="id6490868">5. Play the test signal from step 2 and record
+the room’s response.</para>
+<para id="id4129650">6. Deconvolve the room’s response from the
+Gaussian white noise recording in step 4 by using normal
+deconvolution.</para>
+<para id="id6415032">7. Deconvolve the test signal from the test
+recording in step 5 using either normal deconvolution, or Wiener
+deconvolution with calculations of the noise characteristics from
+the noise recorded in step 3.</para>
+</section>
+</section>
+</content>
+</document>

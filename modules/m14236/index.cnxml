@@ -1,0 +1,40 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Results and Conclusions</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>0bb2db7d-a2d4-4255-99a7-d26f2be24ae8</md:uuid>
+</metadata>
+<content>
+<para id="id10293954">Using a 46-song database, we found our system
+to be quite reliable, even with short clip lengths and low
+signal-to-noise ratios. The system was able to detect matches even when the identity of the song clip could not be audibly ascertained. 
+Since the system handles distortion well, it should be well suited to receive input clips from a microphone.</para>
+<figure id="id10329449">
+<media id="idp8616528" alt=""><image src="../../media/Graphic1-6850.jpg" mime-type="image/jpeg"/></media>
+</figure>
+<para id="id10319854">SNR vs. Confidence Level for Match.
+Confidence is the ratio of the calculated matched filter spike to
+the ideal spike. Even with the lowest SNR we tested (200% noise),
+matching still occurred correctly.</para>
+<figure id="id8722945">
+<media id="idp9848784" alt=""><image src="../../media/Graphic2-3b5c.jpg" mime-type="image/jpeg"/></media>
+</figure>
+<para id="id10285791">Clip Length vs. CPU Time. As clip length
+increases, match-seeking time increases linearly. Smaller clips are
+faster. 75 seconds minimum time is required to search through the
+database. Even with the shortest clip tested (1 second), matching
+occurred correctly.</para>
+<para id="id9055759">The main drawbacks of our system were in its
+computation time. A little over a minute is required to perform the
+search and matching operations. With many more songs added to the database, the delay would be considerably longer.</para>
+<figure id="id8665654">
+<media id="idp1174672" alt=""><image src="../../media/Graphic3-00ad.jpg" mime-type="image/jpeg"/></media>
+</figure>
+<para id="id9720409">Computation Time Breakdown. The FFT algorithms
+in the Match Recognition System consume most of the operation
+time.</para>
+<para id="id10305105">If the database were large enough to use the system in practical applications, the search delay would be far too long.
+To improve the operation time of the system,
+the Match Recognition System would most likely be optimized.
+Possible methods for this optimization include predictive shifting
+in the filtering stage and partitioning of the database.</para>
+</content>
+</document>

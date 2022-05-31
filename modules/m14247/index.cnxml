@@ -1,0 +1,174 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Exploring High Dynamic Range Imaging: §3.1 HDR Image Creation</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>08f77b6f-2a7f-4851-bf18-d886d041a263</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">Since no consumer-grade digital cameras can produce HDR images (of say 32-bits per color channel), how can one get an HDR image to manipulate?</para><para id="element-811">One can estimate an HDR image by combining multiple images across a wide dynamic range.
+
+For example, by averaging an overexposed and an underexposed image of the exact same scene, one gets a low-contrast image containing more data of the scene than either of the previous images.  This is because each image added information to the scene--the overexposed image adds details in the shadows, while the underexposed image adds details in the highlights.</para><example id="element-269"><para id="element-654">
+These example images would be combined to generate the HDR image by some method, as described below:
+</para><figure id="element-427"><media id="idm6867664" alt=""><image src="../../media/memorial004s.jpg" mime-type="image/jpeg"/></media>
+<caption>LDR Image to be Used in Composition of HDR Image</caption></figure><figure id="element-538"><media id="idp469856" alt=""><image src="../../media/memorial009s.jpg" mime-type="image/jpeg"/></media>
+<caption>LDR Image to be Used in Composition of HDR Image</caption></figure><figure id="element-41"><media id="idp6891856" alt=""><image src="../../media/memorial012s.jpg" mime-type="image/jpeg"/></media>
+<caption>LDR Image to be Used in Composition of HDR Image</caption></figure><figure id="element-958"><media id="idm7173904" alt=""><image src="../../media/memorial017s.jpg" mime-type="image/jpeg"/></media>
+<caption>LDR Image to be Used in Composition of HDR Image</caption></figure><figure id="element-278"><media id="idp2846272" alt=""><image src="../../media/memorial020s.jpg" mime-type="image/jpeg"/></media>
+<caption>LDR Image to be Used in Composition of HDR Image</caption></figure>
+</example><para id="element-186">So, the development of the simplest algorithm to generate an HDR image was rather simple--it is just a straight average of all the source LDR images multiplied by the factor difference between the LDR bitrate and the HDR bitrate.  This can be viewed as a straight averaging function, like:</para><equation id="element-622"><m:math>
+ <m:semantics>
+  <m:mrow>
+   <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mi>N</m:mi>
+   </m:mfrac>
+   <m:mstyle displaystyle="true">
+    <m:munderover>
+     <m:mo>∑</m:mo>
+     <m:mrow>
+      <m:mi>i</m:mi><m:mo>=</m:mo><m:mn>0</m:mn>
+     </m:mrow>
+     <m:mrow>
+      <m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+     </m:mrow>
+    </m:munderover>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:msub>
+      <m:mi>A</m:mi>
+      <m:mi>i</m:mi>
+     </m:msub>
+     <m:mo>⋅</m:mo><m:msup>
+      <m:mn>2</m:mn>
+      <m:mrow>
+       <m:mi>H</m:mi><m:mo>−</m:mo><m:mi>L</m:mi>
+      </m:mrow>
+     </m:msup>
+     <m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:mstyle>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>
+</equation><para id="element-639">where <m:math>
+ <m:semantics>
+  <m:msub>
+   <m:mi>A</m:mi>
+   <m:mi>i</m:mi>
+  </m:msub>
+  
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>
+is the ith input color matrix, H is the HDR bitrate (say <m:math>
+ <m:semantics>
+  <m:msup>
+   <m:mn>2</m:mn>
+   <m:mrow>
+    <m:mn>32</m:mn>
+   </m:mrow>
+  </m:msup>
+  
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>), L is the LDR bitrate (say <m:math>
+ <m:semantics>
+  <m:msup>
+   <m:mn>2</m:mn>
+   <m:mn>8</m:mn>
+  </m:msup>
+  
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>),
+ and N is the number of input images.  Please also note that bringing the division factor inside the summation is necessary in the real algorithm, as otherwise the resulting value could have overflow and produce inaccurate results.</para><para id="element-434">Now, while we cannot view this directly since we can't visualize the HDR image on conventional displays, we can use a simple tone-mapping operator to view the HDR image mapped back down to LDR.  Using the Quantizing Operator, we get this result for using averaging of the input images:</para><figure id="element-789"><media id="idp6031504" alt=""><image src="../../media/average.jpg" mime-type="image/jpeg"/></media>
+<caption>HDR Creation via Averaging (tone-mapped using Quantizing Operator)</caption></figure><para id="element-707">While this produces decent results given the input images, we think we could help the tone-mapping operators by generating the HDR image with the largest possible dynamic range, and thus most information.  The next consideration was an upsampling technique, where randomly determined ranges were interpolated differently.  That is, a similar averaging technique was used, but instead of using the raw input color data, it was shifted in a random manner, to be either higher or lower in brightness.  So after multiplying by the difference of the ranges given by the HDR and LDR bitrates, a random number was added on the same order.  This could be thought of something like:</para><equation id="element-338"><m:math>
+ <m:semantics>
+  <m:mrow>
+   <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mi>N</m:mi>
+   </m:mfrac>
+   <m:mstyle displaystyle="true">
+    <m:munderover>
+     <m:mo>∑</m:mo>
+     <m:mrow>
+      <m:mi>i</m:mi><m:mo>=</m:mo><m:mn>0</m:mn>
+     </m:mrow>
+     <m:mrow>
+      <m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+     </m:mrow>
+    </m:munderover>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mo stretchy="false">(</m:mo><m:msub>
+      <m:mi>A</m:mi>
+      <m:mi>i</m:mi>
+     </m:msub>
+     <m:mo>⋅</m:mo><m:msup>
+      <m:mn>2</m:mn>
+      <m:mrow>
+       <m:mi>H</m:mi><m:mo>−</m:mo><m:mi>L</m:mi>
+      </m:mrow>
+     </m:msup>
+     <m:mo stretchy="false">)</m:mo><m:mo>±</m:mo><m:mi>r</m:mi><m:mi>a</m:mi><m:mi>n</m:mi><m:mi>d</m:mi><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:msup>
+      <m:mn>2</m:mn>
+      <m:mrow>
+       <m:mi>H</m:mi><m:mo>−</m:mo><m:mi>L</m:mi>
+      </m:mrow>
+     </m:msup>
+     <m:mo>,</m:mo><m:mi>y</m:mi><m:msup>
+      <m:mn>2</m:mn>
+      <m:mrow>
+       <m:mi>H</m:mi><m:mo>−</m:mo><m:mi>L</m:mi>
+      </m:mrow>
+     </m:msup>
+     <m:mo stretchy="false">)</m:mo><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:mstyle>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>
+</equation><para id="element-523">where <m:math>
+ <m:semantics>
+  <m:msub>
+   <m:mi>A</m:mi>
+   <m:mi>i</m:mi>
+  </m:msub>
+  
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>
+is the ith input color matrix, H is the HDR bitrate (say <m:math>
+ <m:semantics>
+  <m:msup>
+   <m:mn>2</m:mn>
+   <m:mrow>
+    <m:mn>32</m:mn>
+   </m:mrow>
+  </m:msup>
+  
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>), L is the LDR bitrate (say <m:math>
+ <m:semantics>
+  <m:msup>
+   <m:mn>2</m:mn>
+   <m:mn>8</m:mn>
+  </m:msup>
+  
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>), x is a lower bound coefficient (0.75), y is an upper bound coefficient (1.25), rand generates a random integer between the two inputs, 
+ and N is the number of input images.</para><para id="element-14">Again using the Quantizing Operator, we get this result for using upsampling of the input images:</para><figure id="element-439"><media id="idp1672256" alt=""><image src="../../media/upsample.jpg" mime-type="image/jpeg"/></media>
+<caption>HDR Creation via Upsampling (tone-mapped using Quantizing Operator)</caption></figure><para id="element-5">This lead to the final algorithm, a weighted average, that put more emphasis on certain input images if their average luminances fell into certain ranges (with the upsampling from above also included).  For example, if an image is pure white, it probably doesn't contain much useful information, so that image should have less of an impact on the final HDR image.  Another thought was also that the middle-tone images probably contain the most overall information, so they should be weighted more highly.  This algorithm is piecewise and thus harder to write in a standard form, so please look in the source code section for how this works.</para><para id="element-619">Again using the Quantizing Operator, we get this result for using a weighted average of the input images:</para><figure id="element-43"><media id="idp6030656" alt=""><image src="../../media/weighted.jpg" mime-type="image/jpeg"/></media>
+<caption>HDR Creation via Weighting (tone-mapped using Quantizing Operator)</caption></figure><para id="element-262">While these images all look very similar, the weighted average does produce the best results in terms of the histogram.  The weighted average generally seemed to perform better for the shadows and blow out more highlights than the others, but a histogram comparison clearly shows it is superior.  Despite this, given how similar the results of each creation algorithm are, it did not play much in actually tone-mapping the HDR image back down to a displayable LDR range.  So, while the goal was to try to help the tone-mapping algorithms by producing the best HDR image possible, it did not have much of a visible effect for any resulting algorithm.</para><para id="element-225">Now, we should explore how the real work happens, in pulling more information from the HDR image to create the best LDR image possible; that is, the one with the highest dynamic range.</para>   
+  </content>
+  
+</document>

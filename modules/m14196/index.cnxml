@@ -1,0 +1,19 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Matlab Code that implements Piano Note Detection</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>452b6bad-af84-47bf-a884-a123062ddafe</md:uuid>
+</metadata>
+  <content>
+    <para id="element-706">These are the files that contain the code that we used for this project. To run the entire program on a song, place all the files in the Matlab's current directory, and run convertsong(filename), where filename is the name of the wav file containing the song recording. The filename should be inside quotation marks "".</para><figure id="element-584"><title>The Main Program</title>
+<media id="idp2826336" alt=""><download src="convertsong.m" mime-type="application/octet-stream"/></media>
+<caption>The main program. To run our entire algorithm on a song, run this file on it, giving only the file name as a parameter.</caption></figure><figure id="element-258"><title>Note Onset Detection Code</title>
+<media id="idm1595936" alt=""><download src="timeout.m" mime-type="application/octet-stream"/></media>
+<caption>Our Matlab code for finding the times that notes were played at.</caption></figure><figure id="element-978"><title>Frequency Detection Code</title>
+<media id="idp1801088" alt=""><download src="findfrequencies.m" mime-type="application/octet-stream"/></media>
+<caption>Our Matlab code for finding the frequencies of piano notes.</caption></figure><figure id="element-655"><title>Frequency to Note Conversion Code</title>
+<media id="idm184640" alt=""><download src="frequencyToNote.m" mime-type="application/octet-stream"/></media>
+<caption>Matlab code for converting frequencies into the corresponding notes.</caption></figure><figure id="element-633"><title>Note Length and Tempo Detection Code</title>
+<media id="idm548864" alt=""><download src="noteDuration.m" mime-type="application/octet-stream"/></media>
+<caption>Our Matlab code for finding the lengths of all the  notes and the tempo of the song.</caption></figure>   
+  </content>
+  
+</document>

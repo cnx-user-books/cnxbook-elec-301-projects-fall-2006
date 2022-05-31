@@ -1,0 +1,14 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Pocket Change: Applications</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>7e7ea6c7-a2d3-4a7c-aad8-7f47c5966100</md:uuid>
+</metadata>
+  <content>
+<section id="Applications">
+<title>Applications</title>
+    <para id="delete_me">At first glance, the project has no commercial applications whatsoever. We believe that to be the case, but only given its current implementation. There are much easier ways to sort through coins, so it’s unlikely that you will walk into your local grocery store and find a coin counting machine that uses machine vision. These can rely on comparing the physical attributes (size and weight) of the coins, which is much simpler. The problem with these machines is that they are not as open ended as our system. We can add a completely different currency by making new database entries. As such, our system does have some applications in the mobile device industry. For example, a traveler could, at the touch of a button, photograph a handful of coins in a foreign currency and receive a dollar value in a currency that he is familiar with.
+
+</para>
+</section> 
+  </content>
+  
+</document>

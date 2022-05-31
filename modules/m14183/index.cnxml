@@ -1,0 +1,24 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Astronomical Image Deconvolution: Background</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>f9010c53-29ac-4d33-9088-365cd8cf05ab</md:uuid>
+</metadata>
+  <content>
+    <para id="element-821">Many fields, and in particular the field of astronomy, have to deal with large numbers of images of a particular object, distorted by various means (lens, atmospheric, etc.) and with added noise from various sources. The goal is to obtain a clean image of the original object; that is, reduce as much as we are able the distortion and noise level of the images, and construct a composite estimate of the original object from our data set. As a general model, we can view each data object Yj as given by the equation:</para><equation id="element-603"><title>Image Model</title>
+  <m:math>
+    <m:apply>
+    <m:eq/>
+    <m:apply>
+    <m:plus/>
+      <m:apply>
+	<m:times/>
+	<m:cn>Ĥj</m:cn>
+	<m:cn>Ŵ</m:cn>
+      </m:apply>
+      <m:cn>N</m:cn>
+   </m:apply>
+   <m:cn>Ŷj</m:cn>
+   </m:apply>
+</m:math></equation><para id="element-1000">Where Ŷj is the frequency domain representation of our data object, Ĥj is the distortion filter transfer function particular to that image based on variables such as amount of atmosphere between the object and the imaging device, Ŵ is the frequency representation of the original object, and N is the added noise. Our goal is to use our knowledge of the object we are imaging to estimate Ĥj  and N, and therefore determine Ŵ (and w, the original signal).</para>   
+  </content>
+  
+</document>

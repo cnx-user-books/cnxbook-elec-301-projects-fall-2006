@@ -1,0 +1,51 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Decoding Frequencies into Notes</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>c7111a76-740f-4440-af3b-521536999055</md:uuid>
+</metadata>
+  <content>
+    <para id="element-439">Now that the frequencies in each window have been found, it is time to determine what note was most likely played to generate each frequency. As we know that each frequency is 
+<m:math>
+<m:apply>
+  <m:root/>
+  <m:degree><m:ci type="integer"> 12 </m:ci></m:degree>
+  <m:ci> 2 </m:ci>
+</m:apply>
+</m:math> times larger than the preceding frequency, we can declare the points that are 
+<m:math>
+<m:apply>
+  <m:root/>
+  <m:degree><m:ci type="integer"> 24 </m:ci></m:degree>
+  <m:ci> 2 </m:ci>
+</m:apply>
+</m:math> times larger and smaller than the known note frequency to be the limits of the range of frequencies that map to that known note. Thus for a known frequency, <m:math><m:apply><m:selector/><m:ci>f</m:ci><m:cn>o</m:cn></m:apply></m:math>, the range of frequencies that map to it is:</para><equation id="element-950"><m:math>
+ <m:apply>
+  <m:leq/>
+   <m:apply>
+    <m:times/>
+     <m:apply>
+      <m:root/>
+       <m:degree><m:ci type="integer"> -24 </m:ci></m:degree>
+       <m:ci> 2 </m:ci>
+     </m:apply>
+     <m:apply><m:selector/><m:ci>*f</m:ci><m:cn>o</m:cn></m:apply>
+   </m:apply>
+    <m:apply>
+     <m:lt/>    
+      <m:ci>f</m:ci>
+      <m:apply>
+       <m:times/>
+        <m:apply>
+         <m:root/>
+          <m:degree><m:ci type="integer"> 24 </m:ci></m:degree>
+          <m:ci> 2 </m:ci>
+        </m:apply>
+        <m:apply><m:selector/><m:ci>*f</m:ci><m:cn>o</m:cn></m:apply>
+      </m:apply>
+    </m:apply>
+ </m:apply>
+</m:math>
+   </equation><para id="element-493">If we do this for every known note frequency, then the limits for two adjacent frequency ranges coincide exactly, and we have a function that maps any frequency to a note. Such a function is graphed below.</para><figure id="element-393"><media id="idp2544928" alt=""><image src="../../media/noteDecoding50.png" mime-type="image/png"/></media>
+<caption>A section of the regression curve used spanning from 440 Hz to 1760 Hz. Shown in more detail is the range of frequencies that correspond to A#5.</caption></figure><para id="element-947">This is the regression curve we used to map frequencies to notes. A fast way of implementing it is to number each note from 1 to 88, starting with the lowest note that can be played with a piano, and ending at the highest. After doing this, the following Matlab expression will evaluate this curve:</para><code display="block" id="idm3857744">round(12*log(f/27.5)/log(2))+1</code>   
+  </content>
+  
+</document>

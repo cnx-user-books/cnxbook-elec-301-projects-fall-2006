@@ -1,0 +1,13 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Exploring High Dynamic Range Imaging: §8 Source Code</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>69ccd9c6-5461-4a40-a2b5-867d3d87c148</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">See the Matlab files below for source code of how we implemented these ideas.</para><list id="element-649" list-type="bulleted"><item><link resource="hdriMain.m">HDR Imaging Main Interface</link></item>
+<item><link resource="hdriCreating.m">HDR Image Creation</link></item>
+<item><link resource="hdriToneMapping.m">HDR Imaging Tone-Mapping</link></item>
+<item><link resource="hdriTest.m">HDR Imaging Tests</link></item>
+<item><link resource="HDRImaging.zip">Full HDR Imaging Project Code and Results</link></item></list>   
+  </content>
+  
+</document>

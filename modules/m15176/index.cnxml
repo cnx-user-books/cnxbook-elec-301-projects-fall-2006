@@ -1,0 +1,41 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Introduction to FFT matrix approach</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>0278bfb3-5a31-4b4d-ae78-90ee8f519422</md:uuid>
+</metadata>
+<content>
+<section id="id12210032">
+<title>Introduction to the approach:</title>
+<para id="id11671204">Using the FFT approach, we “teach” a matrix
+to learn how to differentiate between genres. We did this by
+feeding the database matrix with lots of samples of each genre and
+tell it what genre each sample is. Then we ask the matrix to make a
+smart decision about a given sample’s genre.</para>
+</section>
+<section id="id12328348">
+<title>Creating the database:</title>
+<para id="id12308418">To create our database, we collected 10 songs
+for each genre (Rap, Rock, Jazz, Pop, and Classical). We first
+convert these songs from Stereo to Mono, which makes it easier for
+Matlab to carry. Using this we’ll get some long vectors
+representing each song. We divide each song into samples of length
+(15ms). Those short samples allow us to get a nice, identified
+picture of the frequencies represented by those samples. We then
+take the FFT (Fast Fourier Transform) of each sample, and stack
+them next to each other into the columns of our database matrix,
+with 661 rows. Each column represents the frequency spectrum of
+each 15ms. After that we normalize each vector respectively. We
+find out that Matlab would run out of memory really fast with huge
+amount of information. An average song of 5 minute length, for
+example, would have 20,000 samples of 15ms. And each one would have
+661 rows, which gives us 13,220,000 numbers to represent one single
+song. We solved this problem by taking average of columns: we
+indeed average a 5 minute song into 75 columns. Although this
+certainly affected our algorithm’s accuracy by some degree, it
+allows us to add more songs to be able to build a bigger database
+matrix, thus compensate for the lost accuracy.</para>
+<para id="id12308494">Now we label each column with a number, which
+represents the type of genre the column stands for (1-5). So each
+number would correspond to a certain FFT column.</para>
+</section>
+</content>
+</document>

@@ -1,0 +1,27 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>The detecting process of FFT matrix approach</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>7d95eded-0d6c-4237-ab83-40496c412764</md:uuid>
+</metadata>
+<content>
+<section id="id11798781">
+<title>The Detecting Process:</title>
+<para id="id11864277">So we load the song we want to detect into
+Matlab. The use would just type Genre (‘song’). After that, our
+program would do the same process of windowing; it did to the songs
+in the database (FFT of windows of 15ms length). This will leave us
+with another, smaller matrix that represents the song we want to
+test. We basically perform an operation of dot production for each
+column of the tested song with our data base. ( The operation of
+Dot Product gives a bigger value for a vector that is similar, and
+a small value for one that is different ). So we basically check
+for the max. value of each dot product operation. And this means
+that this column (frequencies) of the tested song is really close
+to this column that represent a certain genre. We then ask Matlab
+about the genre this column represented. And save this value. After
+doing this for all the columns of the tested song, we’ll end up
+with a bunch of numbers going from (1-5). Finally we check which
+number is the most frequent in the group, and this will tell us
+what genre the tested song is most likely to be.</para>
+</section>
+</content>
+</document>

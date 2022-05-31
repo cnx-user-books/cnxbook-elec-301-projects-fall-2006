@@ -1,0 +1,19 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Pocket Change: Circle Recognition</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>fdaf91ce-e63f-4558-b28b-8b1799c1887a</md:uuid>
+</metadata>
+<content>
+<para id="id3876481">Given an image, the first step is locating the
+coins in the scene. Only then can you make a comparison.</para>
+<para id="id8723181">Many different methods are available for
+finding circles in images. Initially, you might want to try edge detection on the image and then code an algorithm that would, based on the
+located edges, determine the center of the circle. However, you will find
+that circle recognition is a commonly performed task with
+established algorithms.  For our project, we found a user friendly <link url="http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=9168">circle location Matlab function</link>
+that implements the Circular Hough Transform in the MATLAB code repository.</para>
+<para id="id7230837">For more information about the Hough Transform
+you can go <link url="http://visl.technion.ac.il/labs/anat//12-Hough/">here</link>.</para>
+<para id="id5470661">Once you have the radii and centers of the
+circles, you can then move to coin identification.</para>
+</content>
+</document>

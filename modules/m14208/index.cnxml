@@ -1,0 +1,29 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Introduction to Optical Flow</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>e980cb38-c7da-4efd-b62b-1e1042328c07</md:uuid>
+</metadata>
+  <content>
+    <para id="element-311">Much of the image registration algorithm we chose to use centers on the idea of projective flow between images.  Here we will look at the somewhat simpler concept of optical flow, which has been used in computer vision and other applications for decades.</para><para id="element-429">Let's say you only have a one dimensional image, A(x), where A is a function of pixel intensity for each possible location x.  You could then translate all the pixels in that image by a value Δx to generate the image B(x).  Another way to view this is to think of both images as part of one function, but with an additional parameter t, for time.  This extension comes naturally because a difference from the image captured in A to that in B implies that time has elapsed between capturing each of them as well.  This gives us the following equations for E(x,t).</para><equation id="element-945"><m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:mi>E</m:mi><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>A</m:mi><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">)</m:mo>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>
+</equation><equation id="element-596"><m:math display="block">
+ <m:semantics>
+<m:mrow>
+  <m:mi>E</m:mi><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>Δ</m:mi><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>t</m:mi><m:mo>+</m:mo><m:mi>Δ</m:mi><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>B</m:mi><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">)</m:mo>
+</m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>
+</equation><para id="element-128">Extending this into two dimensions is not too hard to imagine, as we would simply have an additional parameter, y.  From this information, we can calculate derivatives at each point to determine the optical flow between the two images.  One way to view these derivatives is to plot a vector field using the x and y derivatives.  Vector fields give a decent picture of the motion from one image to the next, an example of which is included below. </para><figure id="element-406"><title>Sample Optical Flow Field</title>
+<media id="idp129344" alt=""><image src="../../media/flowfield.gif" mime-type="image/gif"/></media>
+<caption>Optical flow field from a taxi driving down a street. (Source: http://www.kfunigraz.ac.at/imawww/invcon/pictures/flowfield.gif)</caption></figure><para id="element-402">With this in mind, we can now take a look at how the image registration algorithm we used builds upon the concept introduced here.</para>   
+  </content>
+  
+</document>

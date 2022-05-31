@@ -1,0 +1,22 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Pocket Change: Coin FFT Creation</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>a9268ab6-c903-4eca-8343-894e8572e15e</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">Now that we've identified all the centers of the coins and their radii using the Hough transform, we can begin processing the data of each coin. The problem with comparing coins is that they can be rotated any amount, and because they're circular, there's no way to tell what the orientation is simply by looking at its general shape. To combat this, we can use the FFT and its special properties. </para><para id="element-782">We'll start by converting the pixels of the coin into a rectangular matrix. This effectively changes the coordinate system from Cartesian to Polar, but you can think of it more easily as 'unwrapping' the coin. Start by taking a radius from the center of the coin to the top of the coin. We can use Bresenham's Line Drawing algorithm to calculate which pixels belong in the radius.</para><figure id="element-243"><title>Coin Unwrapping Radius</title>
+<media id="idm6885120" alt=""><image src="../../media/Texas Line Small.jpg" mime-type="image/jpeg"/></media>
+<caption>
+A image of a radius from the center to the edge, showing
+which pixels would be captured.
+</caption></figure><para id="element-533">Capture the pixels along this radius by storing them as a row in a matrix, with the center to the left and the outer edge to the right. Then, capture a new radius, this time with the center in the same place, but the outer edge moved slightly. The outer edge coordinate can be computed by calculating the sine and cosine of a circle with a user-defined radius. </para><para id="element-900">One problem with this approach is that as we compute each radius going around the circle, some radii will take fewer pixels than others. Since MATLAB requires that a matrix must have the same number of columns in each row, we must account for this difference. A simple solution is to remove any data that is too large by always using the minimum possible size for the radius. If the radius that you just took has more pixels than the current matrix length, truncate the outermost pixels from the new radius and store it. On the other hand, if the new radius has fewer pixels than the matrix, this means that the current radius is actually the smallest so far, so we must remove the extra data from the matrix rows before we can insert the new radius. The final product should look like this: </para><figure id="element-880"><title>Unwrapped Coin</title>
+<media id="idp853344" alt=""><image src="../../media/TexasUnwrappedSmall.png" mime-type="image/png"/></media>
+<caption>
+The unwrapped version of the coin in Fig. 1
+</caption></figure><para id="element-110">Once radii have been taken for all 2π radians, the matrix contains all the unwrapped data for the coin. If we were to look at this matrix, and then look at the unwrapped version of an identical but rotated coin, the rotated one would be the same, except shifted vertically:</para><figure id="element-564"><title>Unwrapped Rotated Coin</title>
+<media id="idp1893440" alt=""><image src="../../media/TestTexasShiftedSmall.png" mime-type="image/png"/></media>
+<caption>
+A shifted unwrapped version of the coin.
+</caption></figure><para id="element-888">You can thus think about the rotation of the coin as a delay in time of a periodic signal. We all know from 301 that a delay in the time domain corresponds to a multiplication by a complex exponential in the frequency domain—a change which only affects the phase. Thus, if we take the FFT, the magnitude of the FFT should be the same between the two coins, and we can ignore the phase. </para><para id="element-545">We only need to take the FFT along each circumference, not along the radii. Each circumference is a column in the matrix. Fortunately for us, the FFT() command in MATLAB takes the FFT along each column when given a matrix. Simply passing our unwrapped matrix into the FFT command will return the FFT of the coin, which we can then pass into the ABS() command to find the magnitude. </para>   
+  </content>
+  
+</document>

@@ -1,0 +1,91 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Exploring High Dynamic Range Imaging: §3.4 Adaptive Gain Control Local Operator</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>690b7138-e70a-4fa3-b513-44760fa0c7a6</md:uuid>
+</metadata>
+<content>
+<para id="id9734376">Would a local operator perform luminance
+compression better than a global one? One thing to take note of
+when working with a local operator is that, when looking at a small
+window of values in an image, if that window happens to encompass
+an edge between two surfaces with greatly varying intensities, and
+one weights the values only with respect to their positions, then
+values across this edge may have a negative effect on the mapped
+pixel. For example, if one wishes to map a bright pixel close to
+such an edge with dark pixels on the other side, and a window used
+takes into account the values across that edge, then the influence
+of the dark pixels on the averaging of the local area would be
+disproportionate, causing the bright pixel to appear much darker
+than one might expect it to be. The same thing would happen to the
+dark pixels across the edge when they are mapped, causing them to
+be mapped much brighter than one might expect. This effect is
+usually manifested as halos across sharp boundaries of intensity.
+However, if values with extreme deviations can be ignored from the
+averaging, then the final mapping would more accurately replicate
+the original scene in reducing the advent of halos, caused by
+averages influenced by extreme values. This is the motivation for a
+gain controlled mapping method that attempts to weight only those
+neighboring pixels with similar intensities to the pixel we wish to
+map, as suggested by Pattanaik [1].</para>
+<para id="id10600288">The idea is that surrounding values which are
+too much brighter or darker than the pixel being mapped should be
+ignored from the weighing function in mapping a pixel. For example,
+if one defines “too bright” or “too dark” to be a factor of 5 from
+the current pixel being analyzed, then neighbors whose values are
+not within the range can be ignored:</para>
+<figure id="element-765"><media id="idp6187568" alt=""><image src="../../media/image001.png" mime-type="image/png"/></media></figure><para id="id7258613">Where Ic is the intensity of every pixel and I
+the intensity of neighboring pixels.</para>
+<para id="id10511575">Since such edges in nature have a smoother
+profile than just an edge, a smoother profile was suggested with
+the formula:</para>
+<figure id="element-447"><media id="idp1350864" alt=""><image src="../../media/image003.png" mime-type="image/png"/></media></figure><para id="id9840756">We made the contrast threshold (the “how
+bright is too bright?” parameter) adjustable to test the effects of
+different values. Below is an example used to test the effect of
+this parameter. For cases where the contrast threshold is less than
+the contrast ratio between two areas across an edge, the filtered
+result is a sharp boundary between the two surfaces. For cases
+where the threshold parameter is greater than the contrast ratio
+between the surfaces across a sharp boundary, the filtered image
+produces blurred versions of the boundary. For the image with
+threshold level 2, there are obvious “clipping” effects around
+areas with fairly sharp boundaries, such as the ceiling structures.
+These effects quickly disappear with increasing threshold values up
+to 5. Beyond that, there is little difference in the final image
+with respect to the threshold value, which seems to suggest that
+white is about 5 times the intensity of mid gray while black is 1/5
+the intensity of mid gray. Another tunable parameter is the radius
+used in the local averaging. The actual size of the local window is
+a square with sides of length 2*radius+1. Increasing the radius
+produced blurrier and more homogenous images, while decreasing it
+sharpened the image while reducing the effect of the averager. Why
+is this case? More values are averaged with larger radii and thus a
+more homogenous mapping is assigned, which makes the mapped pixel
+closer in intensity to its neighbors.</para>
+<para id="id10554622">For mostly continuous surfaces with little
+change in intensity throughout its range, the adaptive gain control
+operator averages out these low contrast areas, which explains the
+blur in the output images However, this type of blur is undesirable
+for most photographic applications, since a significant amount of
+detail is sacrificed.</para>
+<para id="id9634985">
+<figure id="id10169377"><media id="idm8292576" alt=""><image src="../../media/Graphic1-30fb.png" mime-type="image/png"/></media>
+<caption>Threshold = 2, Radius = 2</caption></figure>
+</para>
+
+<figure id="id10648204"><media id="idm7473888" alt=""><image src="../../media/Graphic2-c375.png" mime-type="image/png"/></media>
+<caption>Threshold = 5, Radius = 2</caption></figure>
+
+
+<para id="id9099822"><figure id="id10393596"><media id="idp1593856" alt=""><image src="../../media/Graphic3-dae2.png" mime-type="image/png"/></media>
+<caption>Threshold = 10000, Radius = 2</caption>
+</figure>
+</para>
+
+<para id="id9138489"><figure id="id10056527"><media id="idp2125296" alt=""><image src="../../media/Graphic4-cbea.png" mime-type="image/png"/></media>
+<caption>Threshold = 5, Radius = 10</caption>
+</figure>
+</para>
+<figure id="id10497031"><media id="idp3544320" alt=""><image src="../../media/Graphic5-570d.png" mime-type="image/png"/></media>
+<caption>Threshold = 5, Radius = 1</caption></figure>
+
+</content>
+</document>

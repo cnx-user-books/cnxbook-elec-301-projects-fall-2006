@@ -1,0 +1,30 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>MATLAB m-files</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>4ae81cbd-17bc-41fa-ae9a-82d64e4a53b5</md:uuid>
+</metadata>
+<content>
+<para id="id9662610">Main function: 
+<link resource="finger2.m">finger2.m</link></para>
+<para id="id9411409">Toolbox for reading mp3: 
+<link url="http://tinyurl.com/y89g4u">
+mp3_toolbox</link></para>
+<para id="id7736073">AFG: 
+<link resource="makeframe.m">makeframe.m</link>, 
+<link resource="framedifference.m">
+framedifference.m</link></para>
+<para id="id9742902">Auxiliary functions for AFG: 
+<link resource="convertmono.m">convertmono.m</link>, 
+<link resource="dividefreqs.m">dividefreqs.m</link>, 
+<link resource="energy.m">energy.m</link>, 
+<link resource="hanning.m">hanning.m</link></para>
+<para id="id9851019">Data files for AFG: 
+<link resource="han.mat">han.mat</link></para>
+<para id="id7491990">MRS: 
+<link resource="matchprint2.m">matchprint2.m</link></para>
+<para id="id5645120">Auxiliary functions for MRS: 
+<link resource="matnorm.m">matnorm.m</link></para>
+<para id="id9012734">Performance report: 
+<link resource="Profiler%20-%20AFRS.pdf">
+Profiler - AFRS.pdf</link></para>
+</content>
+</document>

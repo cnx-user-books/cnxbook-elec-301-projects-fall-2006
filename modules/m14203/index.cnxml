@@ -1,0 +1,108 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>The Autoregressive Model and Formant Analysis</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>89924bda-8a58-463f-86e6-c99040873292</md:uuid>
+</metadata>
+<content>
+<section id="id12815787">
+<title>The Autoregressive Model</title>
+<para id="id11417462">Interpreting this signal first begins with
+determining an actual equation for the signal. The best way to do
+that is by using an autoregressive model. An autoregressive model
+is simply a model used to find an estimation of a signal based on
+previous input values of the signal. The actual equation for the
+model is as follows:</para>
+<figure id="id10157962"><title>The Autoregressive Model</title>
+<media id="idm6068928" alt=""><image src="../../media/Graphic1-892a.png" mime-type="image/png"/></media>
+<caption>Wikipedia 2006</caption></figure>
+<para id="id12762509">The model consists of three parts: a constant
+part, an error or noise part, and the autoregressive summation. The
+actual summation represents the fact that the current value of the
+input depends only on previous values of the input. The variable p
+represents the order of the model. The higher the order of the
+system, the more accurate a representation it will be. Therefore,
+as the order of the system approaches infinity, we get almost an
+exact representation of our input system.</para>
+<para id="id12512223">This system looks almost exactly like a
+differential equation. In fact, this equation can be used to find
+the transfer function for the signal.</para>
+</section>
+<section id="id12898556">
+<title>Finding the Formants</title>
+<para id="id12196670">Once you have the transfer function, you
+merely need to get your enveloped syllables and pass them through
+this transfer function. Once you take the frequency response of the
+transfer function, you can get a very nice plot as its
+output (Figure 1).</para>
+<figure id="id12096873"><media id="idm3241936" alt=""><image src="../../media/Graphic2-8254.png" mime-type="image/png" height="400" width="600"/></media>
+
+<caption>A sample frequency response.  The formants are the green points at the peaks.</caption></figure>
+<para id="id12896073">This gives us something we can actually
+interpret. Specifically, you can clearly see the formants of the
+vowel – that is, you can see the peak values of the frequency
+response. These peaks are what differentiate vowel sounds from one
+another. For instance, looking at these vowel sounds, all from the
+same person, there is a clear discrepancy in their
+appearances (see Sample Formants).</para>
+<para id="id12821819">
+<figure id="id12821822"><title>Sample Formants</title>
+  <subfigure id="subfig1">
+    <media id="idm3013584" alt=""><image src="../../media/Graphic3-35d6.png" mime-type="image/png" height="250" width="400"/></media>
+    <caption>The "a" vowel sound.</caption>
+  </subfigure>
+  <subfigure id="subfig2">
+    <media id="idm5404080" alt=""><image src="../../media/Graphic4-4fea.png" mime-type="image/png" height="250" width="400"/></media>
+    <caption>The "ah" vowel sound.</caption>
+  </subfigure>
+
+</figure>
+
+</para>
+<para id="id12604003">
+<figure id="id12604005"><title>Sample Formants</title>
+<subfigure id="subfig4">
+    <media id="idm13433552" alt=""><image src="../../media/Graphic5-9db2.png" mime-type="image/png" height="250" width="400"/></media>
+    <caption>The "ee" vowel sound.</caption>
+  </subfigure>
+  <subfigure id="subfig5">
+    <media id="idm13179664" alt=""><image src="../../media/Graphic6-ec67.png" mime-type="image/png" height="250" width="400"/></media>
+    <caption>The "ah" vowel sound.</caption>
+  </subfigure>
+
+</figure>
+
+</para>
+<para id="id9642841">Examining the first two formants, there are
+clear differences between where they occur and their magnitude in
+each vowel sound. These peak values will also be different from
+person to person, even for the same vowel. For instance, compare
+the sound ‘a’ (as in cat) for each member of the group (see Speaker Vowel Comparisons).</para>
+<para id="id12766970"><figure id="id12766973"><title>Speaker Vowel Comparisons</title>
+<subfigure id="subfig6">
+    <media id="idm4928400" alt=""><image src="../../media/Graphic7-87a1.png" mime-type="image/png" height="250" width="400"/></media>
+    <caption>Damen Hattori's "a" sound.</caption>
+  </subfigure>
+  <subfigure id="subfig7">
+    <media id="idm6260080" alt=""><image src="../../media/Graphic8-4321.png" mime-type="image/png" height="250" width="400"/></media>
+    <caption>Chris Pasich's "a" sound.</caption>
+  </subfigure></figure>
+</para>
+<para id="id10449303"><figure id="id10449306"><title>Speaker Vowel Comparisons</title>
+<subfigure id="subfig8">
+    <media id="idm13285456" alt=""><image src="../../media/Graphic9-fb80.png" mime-type="image/png" height="250" width="400"/></media>
+    <caption>Matt McDonell's "a" sound.</caption>
+  </subfigure>
+  <subfigure id="subfig9">
+    <media id="idm6274240" alt=""><image src="../../media/Graphic10-314d.png" mime-type="image/png" height="250" width="400"/></media>
+    <caption>Josh Long's "a" sound.</caption>
+  </subfigure>
+</figure>
+</para>
+<para id="id12729140">Even though the structure of the frequency
+responses are similar, the vowel sounds each have slightly
+different formants, both in the frequency at which they occur and
+the height that they attain. So finally, we have some way to
+analyze our signal. All that remains is the final step – comparing
+these formants to the formants of the whole group.</para>
+</section>
+</content>
+</document>

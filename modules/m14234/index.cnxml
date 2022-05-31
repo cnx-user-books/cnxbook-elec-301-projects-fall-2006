@@ -1,0 +1,28 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Overview of System Structure</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>7f3685c7-7a04-4071-9b43-3715fb5b7d1f</md:uuid>
+</metadata>
+<content>
+
+<para id="id6845033">Our goal is to create a dependable and robust
+system that can effectively identify an audio clip from a database
+of songs and return identification information such as the
+title.</para>
+<para id="id6899174">We propose a system that stores “fingerprints”
+of audio files in a database. When a match request is initiated,
+the system takes a fingerprint of the file to be searched for and
+returns song information based on fingerprint comparisons.</para>
+<para id="id7088448">To add a song to the database, the full-length
+high-quality (44.1 kHz, 16-bits) audio file is sent to the audio
+fingerprint generator (AFG). The output of AFG is then stored in an
+array in the database.</para>
+<para id="id6869882">To identify an audio clip, the audio clip file
+(any quality) is sent to the AFG and the resulting fingerprint is
+compared against every fingerprint in the database using the match
+recognition system (MRS).</para><figure id="element-172"><title>Figure 1</title>
+  <media id="idp4819216" alt=""><image src="../../media/overview.jpg" mime-type="image/jpeg"/></media>
+  <caption>An unidentified audio clip is sent to the audio fingerprint generator. The resulting fingerprint is matched against every known fingerprint in the database.</caption>
+</figure>
+
+</content>
+</document>

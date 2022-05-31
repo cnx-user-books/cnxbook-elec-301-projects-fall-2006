@@ -1,0 +1,51 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Exploring High Dynamic Range Imaging: §3.8 Local Gaussian Convolution</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>2cb19667-681f-4314-96d1-a9be2b2a117e</md:uuid>
+</metadata>
+<content>
+<para id="id10389456">Using the experience we have gained so far,
+and the knowledge gained in introductory DSP courses, let’s
+formulate another local operator. The goal is to compress luminance
+as well as the adaptive gain control had done while maintaining
+fine detail and sharpness. Recall that averaging can be done
+through convolution with a filter, and we can manipulate the weight
+of the average by changing the shape of the filter. It seems
+natural that the pixel being mapped should be weighted most
+heavily, so we may decide to use a Gaussian to convolve a small
+local area around the pixel being mapped to find a weighted average
+to map the pixel. You may be concerned with the production of halos
+without the adaptive gain control explored in sections 3.4, but
+let’s see if the natural shape of the Gaussian will be able to
+prevent them without extra control.</para>
+<para id="id10340650">Example Gaussian:</para>
+<para id="id10222071">0.0035 0.0114 0.0183 0.0114 0.0035</para>
+<para id="id10219226">0.0114 0.0591 0.1353 0.0591 0.0114</para>
+<para id="id10282274">0.0183 0.1353 1.0000 0.1353 0.0183</para>
+<para id="id10414528">0.0114 0.0591 0.1353 0.0591 0.0114</para>
+<para id="id9481646">0.0035 0.0114 0.0183 0.0114 0.0035</para>
+<para id="id10390923">Think back to your DSP class again, and
+recall that convolution in the time domain is equivalent to
+multiplication in the frequency domain. To speed up the process,
+convolution can be done using the DFTs of the Gaussian and the
+small local area. Using MATLAB’s efficient FFT algorithm, the whole
+image conversion and tone mapping process is on the order of
+seconds. The algorithm does not blur the image to the degree that
+adaptive gain control does, but since it does still blur the image
+slightly, it also employs the edge preservation technique used in
+the later version of the adaptive gain control method.</para>
+<para id="id10289323">Comparing the local convolution mapping with
+the adaptive gain control method, the former clearly retains more
+detail in the wall artwork and the stained-glass window to the
+right.</para>
+<para id="id9942560">
+<figure id="id9942574"><media id="idm4639888" alt=""><image src="../../media/Graphic1-a540.png" mime-type="image/png"/></media>
+<caption>Local Operator with Convolution</caption></figure>
+</para>
+
+<figure id="id10288417"><media id="idm7049376" alt=""><image src="../../media/Graphic2-bc44.png" mime-type="image/png"/></media>
+<caption>Adaptive Gain Control with Edge Preservation;
+Radius = 2, Threshold = 5, Max Difference = 1.1, Number Different = 1</caption></figure>
+
+
+</content>
+</document>

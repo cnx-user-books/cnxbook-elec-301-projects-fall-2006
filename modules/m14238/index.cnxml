@@ -1,0 +1,57 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Exploring High Dynamic Range Imaging: §1 Introduction to HDRI</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>0c4442c8-2fba-4a8d-ae84-c765789ffe0e</md:uuid>
+</metadata>
+<content>
+<para id="id5860838">The advent of digital photography has been
+marked by numerous and significant technical gains in terms of
+resolution, noise, and convenience in post processing. However, one
+area in which digital media still trails its analogue counterpart
+is dynamic range. A capturing media’s dynamic range is its ability
+to maintain a wide range of information, from dark to bright
+values; traditional silver halide camera film excels in its ability
+to capture a wide range of brightness levels over even that of the
+priciest digital cameras.</para>
+<para id="id5115534">Almost anyone with photography experience may
+have noticed that, in certain conditions, something they had
+intended to capture was either too bright or too dark to see
+clearly in the actual print, often becoming completely white or
+black and devoid of any useful information. To propose a couple of
+scenarios in which this phenomenon may occur: One may imagine
+himself taking a picture of a subject adorned with jewelry on a
+sunny day; while the camera meters for the subject’s face, the
+luster of the silver necklace may cause it adopt a white glow
+against the skin of the subject, particularly if the subject has
+darker skin (since the camera “thinks” that the average brightness
+is lower than you or I would perceive it to be). Likewise, taking a
+picture of a subject with a sunset in the background may cause the
+subject to lose any three-dimensionality and become a silhouette.
+The capturing media, in these cases, cannot cope with the extreme
+contrast of the scene, which, in real-life cases, may often exceed
+a 50,000:1ratio.</para>
+<para id="id5189125">Traditionally, this problem was dealt with in
+the darkroom by techniques such as dodging and burning. Although
+image editing software such as Adobe’s Photoshop offer similar
+tools, the limited color depth of 8-bit file formats and even
+proprietary 12-bit RAW formats constrains their efficacy. Along
+with the myriad performance gains of digital photography in most
+other technical areas over traditional media and the relative ease
+in processing of digital images, there has been great impetus to
+increase the amount of captured information digitally. This is
+usually done by taking several images at different exposure levels
+and then combining them to form a high color depth result, usually
+32-bits. However, a major problem surfaces with this approach; with
+a few exceptions, current technology in display technology,
+printing devices and print media simply cannot handle 32-bit files,
+severely limiting the usefulness of these formats. One solution is
+to compress the high color-depth file to one with lower color
+depth, such as an 8 bit JPEG or TIFF format, while maintaining the
+visual perception of increased color depth. In other words, one may
+attempt to map the extreme highlight and shadow detail present in
+the high color depth image into one with lower depth. This type of
+transformation is often termed “tone mapping”, and the conversion
+of multiple images into a high color depth image and “tone mapping”
+forms the two major bodies of “high dynamic range” imaging
+(HDRI).</para>
+</content>
+</document>

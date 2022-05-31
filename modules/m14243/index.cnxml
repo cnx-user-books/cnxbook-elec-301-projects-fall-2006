@@ -1,0 +1,83 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Exploring High Dynamic Range Imaging: §5.2 Wavelets and HDR</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>373fa608-c267-4c5a-ac4f-e721f8cb0dc1</md:uuid>
+</metadata>
+<content>
+<para id="id9856883">After implementing numerous tone operators, we
+were curious as to whether or not there were any applications for
+wavelets in HDR. After researching, we found that while wavelets
+are more often used for data compression and noise reduction in
+HDR, wavelets can also be used to create an unsharp mask to adjust
+the sharpness of an image.
+<footnote id="idp5766464">Christian Buil, “Comet High Dynamic Range
+Imagery: Application to Total Eclipse Processing.” (12 Dec 2006)
+&lt;http://www.astrosurf.com/buil/iris/tutorial19/doc41_us.htm&gt;.</footnote></para>
+<para id="id9155448">The unsharp mask works by increasing the
+contrast at the edges. In photography, unsharp masks are created by
+making a blurred version of the original image in a wet darkroom
+and then overlays the two images. In most cases, the blurred
+version is created by applying a Gaussian blur to a copy of the
+image. The two matrices are then subtracted. If the value in the
+difference matrix is greater than a specified threshold, the darker
+colors are made darker and the lighter colors are made lighter in
+the sharpened image.
+<footnote id="idm1321648">Dale Cotton and Brian D. Buck,
+“Understanding the Digital Unsharp Mask,” (12 Dec 2006)
+&lt;http://www.luminous-landscape.com/tutorials/understanding/series/understanding-usm.shtml&gt;.</footnote></para>
+<para id="id7441136">In our unsharp mask, instead of using a
+Gaussian blur, we use wavelets to generate the blurred mask. While
+the Fourier representation only retains the frequency information,
+the wavelet representation contains both frequency and time
+information. Since it is impossible to compute all of the wavelet
+coefficients, we will use the discrete wavelet transform to analyze
+our signal.
+<footnote id="idm564048">“Wavelet” Wikipedia (12 Dec 2006)
+&lt;http://en.wikipedia.org/wiki/Wavelet&gt;.</footnote>The Haar DWT is
+generated using filter banks.</para>
+<para id="id9679304">The filter bank splits the image into various
+frequency bands. To create a level one 2D filter bank, make two
+copies of the image matrix. Run a low pass filter on one copy and a
+high pass filter on the other copy. Next downsample each copy of
+the image matrix by removing all of the even columns. Then
+recombine the two downsampled copies so that the new matrix has the
+same matrix dimensions as the original. As a result, one half of
+the new matrix has been low passed while the other half has been
+high passed. Now that you have filtered the column vectors, you
+need to do the same thing for the row vectors. The resulting matrix
+should have four sections: a low passed section that was low passed
+again (approximation matrix), a low passed section that was then
+high passed (horizontal details), a high passed section that was
+then low passed (vertical details), and a high passed section that
+was high passed again (diagonal details). The section that looks
+most like the original image is the one that was low passed twice.
+However, it is still blurrier than the original because the high
+frequencies were removed from the image. To create multi-level
+filter banks, continue to high pass, low pass, and then downsample
+the section of the matrix that is always low passed. To create a
+blurred image, zero out all of the matrices except for the
+approximation matrix, then apply the IDWT for the Haar wavelet.
+<footnote id="idp238144">S. Allen Broughton, “Chapter 7: Filter Banks
+and the Discrete Wavelet Transform” 1998 (Terre Haute: Rose-Hulman
+Institute of Technology, 12 Dec 2006)
+&lt;http://www.rose-hulman.edu/~brought/Epus/Imaging/waveimage.html&gt;
+2.</footnote></para>
+<para id="id9717452">We have found that the image is sharpened if
+you use a level 1 filter bank and even more so with a level 2
+filter bank. However, there is visually no difference between
+sharpening with a level 2 filter bank and a level 3 filter bank.
+Also if the amount you sharpen by is too great, then the sharpened
+image will have halos. However, as opposed to diffuse halos that
+are produced by sharpening with a Gaussian blur, the filter banks
+produce a somewhat blockier halo effect. While no information is
+gained by applying an unsharp mask, it can be used to enhance the
+images produced by some of our own images.</para>
+<figure id="id7858762"><media id="idp12997104" alt=""><image src="../../media/memorialGlobal.PNG" mime-type="image/png"/></media>
+	<caption>Original Image</caption></figure>
+<figure id="id4876122"><media id="idp7324096" alt=""><image src="../../media/waveletMbefore.PNG" mime-type="image/png"/></media>
+	<caption>Spliting the image into 3 levels of filter banks</caption></figure>
+<figure id="id0983567"><media id="idp9385104" alt=""><image src="../../media/waveletMafter.PNG" mime-type="image/png"/></media>
+	<caption>Zeroing out everything except the approximation matrix</caption></figure>
+<figure id="id1234598"><media id="idp8156928" alt=""><image src="../../media/memorialBlur3.PNG" mime-type="image/png"/></media>
+	<caption>Reconstructing the image using the zeroed-out filter banks to create a blurred image</caption></figure>
+</content>
+</document>

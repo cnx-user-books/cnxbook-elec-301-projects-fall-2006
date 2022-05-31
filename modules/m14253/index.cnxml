@@ -1,0 +1,56 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Exploring High Dynamic Range Imaging: §7 References</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>68c6c910-8755-49b0-b09b-cc6ad86299aa</md:uuid>
+</metadata>
+<content>
+<para id="id4080560">[1] Sumanta Pattanaik and Hector Yee,
+2002</para>
+<para id="id9418522">“Adaptive Gain Control for High Dynamic Range
+Image Display”
+
+</para>
+<para id="id3431475">[2]Raanan Fattal, Dani Lischinski, and Michael
+Werman, 2002</para>
+<para id="id8328896">“Gradient Domain High Dynamic Range
+Compression”</para>
+<para id="id5374622">[3] Jack Tumblin and Greg Turk, 1999</para>
+<para id="id5399264">“LCIS: A Boundary Hierarchy For
+Detail-Preserving Contrast Reduction”</para>
+
+<para id="id2416195">[4]Goldman, Ron. “Lecture 17: Recursive Ray
+Tracing.”, 2006
+&lt;http://www.owlnet.rice.edu/~comp360/lectures/RayTracing.pdf&gt;.</para>
+<para id="id6436769">[5]Hearn, Donald, and M. Pauline Baker.
+Computer Graphics. 2nd ed. Englewood Cliffs:</para>
+<para id="id6355314">Prentice Hall, 1994.</para>
+<para id="id9408284">[6]Martin, Arnold. “Distributed Ray Tracing.”
+1999
+&lt;http://web.cs.wpi.edu/~matt/courses/cs563/talks/dist_ray/dist.html&gt;</para>
+<para id="id6556817">[7] Erik Reinhard, Michael Stark, Peter
+Shirley, and James Ferwerda</para>
+<para id="id7031662">“Photographic Tone Reproduction for Digital
+Images”</para>
+<para id="id6920325">&lt;
+<link url="http://www.cs.utah.edu/~reinhard/cdrom/tonemap.pdf">
+http://www.cs.utah.edu/~reinhard/cdrom/tonemap.pdf</link>&gt;</para>
+<para id="id9300268">[8]Christian Buil</para>
+<para id="id5569082">“IRIS TUTORIAL: Comet High Dynamic Range
+imagery Application to Total Eclipse Processing”</para>
+<para id="id8850095">&lt;
+<link url="http://www.astrosurf.com/buil/iris/tutorial19/doc41_us.htm">
+http://www.astrosurf.com/buil/iris/tutorial19/doc41_us.htm</link>&gt;</para>
+<para id="id4074334">[9]Broughton, S. Allen. “Chapter 7: Filter
+Banks and the Discrete Wavelet Transform,” 1998</para>
+<para id="id4319842">
+&lt;http://www.rose-hulman.edu/~brought/Epubs/Imaging/waveimage.html&gt;</para>
+<para id="id5753391">[10]Buil, Christian. “Comet High Dynamic Range
+Imagery: Application to Total Eclipse Processing.” ,2006</para>
+<para id="id6304815">
+&lt;http://www.astrosurf.com/buil/iris/tutorial19/doc41_us.htm&gt;</para>
+<para id="id6819501">[11]Cotton, Dale and Brian D. Buck.
+“Understanding the Digital Unsharp Mask,” 2006
+&lt;http://www.luminous-landscape.com/tutorials/understanding-series/understanding-usm.shtml&gt;</para>
+<para id="id7206656">[12]“Wavelet”, Wikipedia, 2006
+&lt;http://en.wikipedia.org/wiki/Wavelet&gt;</para>
+</content>
+</document>

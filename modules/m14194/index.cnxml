@@ -1,0 +1,82 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Results, Achievements and Shortcomings of our Implementation</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>abf42945-b79d-463b-bc67-6e36553a4136</md:uuid>
+</metadata>
+  <content>
+    <para id="element-65">The culmination of our efforts resulted in a wide array of both achievements and shortcomings. We discovered many detection  techniques that could be coded and implemented easily and effectively. Conversely, there were many nuances and non-ideal behaviors exhibited in even the most simple of piano pieces that a talented musician would have trouble detecting, let alone a program in Matlab. 
+</para>
+<section id="achievements">
+  <title>Achievements</title>
+<list id="element-306" list-type="bulleted"><item>High precision in hit detection for reasonably paced songs up to eighth notes</item>
+ <item>High success-rate in note detection for single notes played at a time</item>
+ <item>Effective quantization from frequency to note for well-tuned pianos</item>
+ <item>Very precise note-length determination for all notes actually detected and analyzed</item></list>
+</section>
+<section id="shortcomings">
+  <title>Shortcomings</title>
+<list id="element-196" list-type="bulleted"><item>Faults in piano and non-ideal behavior can cause anomalies in output
+  <list id="piano-fault-sublist" list-type="bulleted">
+  <item>Poor tuning causes note-detection errors</item>
+  <item>Residual ringing after key-release can cause notes to   appear longer in duration</item>
+  </list></item>
+ <item>Chord detection, especially in octaves, is imprecise: some overlapping notes escape detection</item>
+ <item>Poor note-hit detection in “busy” songs</item>
+ <item>Overlapping note-hits causes single, held notes to appear as multiple shorter notes</item>
+</list>
+</section>
+<section id="examples">
+  <title>Examples</title>
+<para id="element-708">We used many different songs to test our algorithm, but these three examples effectively illustrate the above points. The songs are a chromatic scale starting at C5, <cite><cite-title>Mary had a Little Lamb</cite-title></cite>, and the beginning of Pachelbel's <cite><cite-title>Canon in D</cite-title></cite>.</para><para id="element-375">Each example contains the original recording in the top left, a matrix representation of the generated sheet music on the right, and a computer-generated song playing the sheet music in the bottom left. In other words, the generated music is what would be heard if someone were to play the sheet music we generate.</para><para id="element-802">To read the matrix form on the right, read left to right, then top to bottom. Each row contains a set of notes that are played simultaneously, followed by the length of the note. After playing those note(s), proceed to the next line and play those notes. At no time should two notes from different rows both be played.</para><table frame="none" colsep="0" rowsep="0" id="element-760" summary=""><title>C5 Chromatic Scale</title>
+<tgroup cols="2"><tbody>
+  <row>
+    <entry><link resource="allnotesC5.wav">The original recording
+           </link></entry>
+    <entry morerows="1"> 
+      <media id="idm9407264" alt=""><image src="../../media/C5chrom.png" mime-type="image/png"/></media>
+    </entry>
+  </row>
+  <row>
+    <entry><link resource="allnotesC5_NEW.wav">The generated music
+           </link></entry>    
+  </row>
+</tbody>
+
+
+
+
+</tgroup>
+</table><para id="element-693">Here, the melody of this simple scale is deciphered perfectly. The only errors being that the previous notes ring through twice (marked in red), and the last note's length was unable to be determined due to the lengthy silence at the end of the recording (marked in blue).</para><table frame="none" colsep="0" rowsep="0" id="element-213" summary=""><title>Mary had a Little Lamb</title>
+<tgroup cols="2"><tbody>
+  <row>
+    <entry><link resource="MaryA4.wav">The original recording
+           </link></entry>
+    <entry morerows="1"> 
+      <media id="idp728592" alt=""><image src="../../media/MaryA4.png" mime-type="image/png"/></media>
+    </entry>
+  </row>
+  <row>
+    <entry><link resource="MaryA4_NEW.wav">The generated music
+           </link></entry>    
+  </row>
+</tbody>
+</tgroup>
+</table><para id="element-777">Again, this simple song was deciphered perfectly except for previous notes ringing through (marked in red), and the failure to find the last note's length due to the silence at the end of the recording (marked in blue).</para><table frame="none" colsep="0" rowsep="0" id="element-310" summary=""><title>Pachelbel's Canon in D</title>
+<tgroup cols="2"><tbody>
+  <row>
+    <entry><link resource="pachelbel30.wav">The original recording
+           </link></entry>
+    <entry morerows="1"> 
+      <media id="idm2201024" alt=""><image src="../../media/pachelbel30.png" mime-type="image/png"/></media>
+    </entry>
+  </row>
+  <row>
+    <entry><link resource="pachelbel30_NEW.wav">The generated music
+           </link></entry>    
+  </row>
+</tbody>
+</tgroup>
+</table><para id="element-660">This song shows the greatest shortcoming of our implementation, which is difficulty detecting chords. Again, note that the melody and the note lengths were deciphered perfectly. However, when the quieter, higher harmony begins to play, it does not get picked up (marked in green). Finally, the repeated F#/Gb2 at the end shows how overlapping notes cause a longer note to appear as two shorter notes.</para>   
+</section>
+  </content>
+  
+</document>

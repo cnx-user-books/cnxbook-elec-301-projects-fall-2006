@@ -1,0 +1,40 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Introduction to Echo Removal by Deconvolution</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>62fcd129-7073-4b72-9c1e-a6eb8872aa8e</md:uuid>
+</metadata>
+<content>
+<section id="id4924851">
+<title>Introduction to Echo Removal by Wiener Deconvolution</title>
+<section id="id5163379">
+<title>The Problem:</title>
+<para id="id4253382">Acoustical engineers constantly strive to
+create “perfect” environments for audio recordings. Some factors
+that they examine include:</para>
+<list list-type="bulleted" id="id3234176">
+<item>Dimensions and shape</item>
+<item>Wall surfaces</item>
+<item>Positioning of objects inside the environment (such as the
+performers themselves)</item>
+<item>Microphone positioning</item>
+<item>Background Noise</item>
+</list>
+<para id="id4058069">Many times such perfect conditions cannot be
+achieved, and the recording includes unwanted distortion from the
+environment.</para>
+</section>
+<section id="id4417780">
+<title>Proposed Solution:</title>
+<para id="id4736591">The impulse response of a recording
+environment can be found by using deconvolution on a test signal.
+Once the impulse response of a recording environment is found,
+deconvolution can then be used again to remove its effects on our
+recorded signal. Due to the noise sensitive nature of
+deconvolution, Wiener deconvolution should be used when ever
+possible to recover a more accurate version of the original signal.
+Audio engineers can then apply desired digital effects (reverb,
+etc.) to the recovered signal, without having to worry about the
+recording environment itself.</para>
+</section>
+</section>
+</content>
+</document>

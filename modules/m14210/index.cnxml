@@ -1,0 +1,27 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Overview of Image Superresolution</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>1369fd6b-32fa-41f7-89ad-e883371ca0ad</md:uuid>
+</metadata>
+  <content>
+<section id="mot">
+  <title>Motivation</title> 
+  <para id="para2">Imagine your daughter’s graduation. You’re standing in the crowd, ready with your camera to capture the pride and happiness of the moment--but all that comes out is a blurry, poor-quality photo of a figure you can’t even recognize yourself. We have all suffered from this experience, in one way or another. There are moments in our lives worth capturing and remembering, but without a very good camera, sometimes not even one of the tens of pictures that you take comes out alright. In those instances we tend to wish that we could exchange all of the bad photos we took to get just one good image.</para>
+</section>
+<section id="sol">
+  <title>Solution</title>
+  <para id="para3">There are two solutions to this problem. The obvious one to most people would be to go ahead and spend a lot of money on a high-resolution camera.
+
+<figure id="hcam"><title>Camera Options</title>
+  <media id="idp3074736" alt=""><image src="../../media/cameras.bmp" mime-type="image/bmp"/></media>
+  <caption>Which one do you want to buy (and carry around)?? (Sources: 3,4)</caption>
+</figure>
+
+The other solution, called image superresolution, is a technique that uses a set of low-resolution (LR) images and combines them into one high-resolution (HR) image.</para><para id="element-757">There are two image-analysis techniques involved in superresolution: registration and interpolation.  Registration deals with the issue of aligning the LR images.  This is a necessary step, since, though the original images may have been taken from approximately the same location, they are likely to have slightly different tilt, pan, rotation, zoom, etc.  The second step to achieving superresolution is interpolation, the process of comparing the LR pixel values to generate new pixel values for the HR image.</para>
+</section>
+<section id="alg">
+  <title>Algorithm</title>
+  <para id="para4">There are a variety of effective algorithms for image superresolution.  They differ in their levels of complexity and the quality of the results they yield.  For our project, we chose a featureless method for estimating 8 parameters that compose an exact projective coordinate transformation to register the available LR frames, and a triangulation algorithm used to interpolate the different pixel values obtained by the original images.</para>
+</section>
+  </content>
+  
+</document>

@@ -1,0 +1,148 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Exploring High Dynamic Range Imaging: §3.2 Simple Operator</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>63eb45a0-1bec-4ad8-8bb0-c95c9a7f4d63</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">Now that one has an HDR image, to be able to display it on conventional displays, one must map it back down to the range of an LDR image.  This results from current display technologies, be CRT, LCD, or printer, can only display at most about 8-bits per color channel, around the LDR range.  So, to be able to see the results of adding all this information together, one must map the high-dynamic range of 32-bits back to 8-bits.</para><para id="element-686">The simplest way to perform this calculation is using a quantizer, to directly map ranges in the <m:math>
+ <m:semantics>
+   <m:msup>
+    <m:mn>2</m:mn>
+     <m:mn>32</m:mn>
+   </m:msup>
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>
+ space back to single values in <m:math>
+ <m:semantics>
+  <m:mrow>
+   <m:msup>
+    <m:mn>2</m:mn>
+    <m:mn>8</m:mn>
+   </m:msup>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>
+space.  That is, the range <m:math>
+ <m:semantics>
+  <m:mrow>
+   <m:mrow><m:mo>{</m:mo> <m:mrow>
+    <m:mn>0</m:mn><m:mo>…</m:mo><m:mfrac>
+     <m:mrow>
+      <m:msup>
+       <m:mn>2</m:mn>
+       <m:mrow>
+        <m:mn>32</m:mn>
+       </m:mrow>
+      </m:msup>
+      
+     </m:mrow>
+     <m:mrow>
+      <m:msup>
+       <m:mn>2</m:mn>
+       <m:mn>8</m:mn>
+      </m:msup>
+      
+     </m:mrow>
+    </m:mfrac>
+    
+   </m:mrow> <m:mo>}</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>{</m:mo> <m:mrow>
+    <m:mn>0</m:mn><m:mo>…</m:mo><m:mtext>16777216</m:mtext>
+   </m:mrow> <m:mo>}</m:mo></m:mrow>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>
+ would all be mapped to 0 in the <m:math>
+ <m:semantics>
+  <m:msup>
+   <m:mn>2</m:mn>
+   <m:mn>8</m:mn>
+  </m:msup>
+  
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>
+space.  This can be realized by:</para><equation id="element-664"><m:math>
+ <m:semantics>
+  <m:mfrac>
+   <m:mrow>
+    <m:mrow><m:mo>⌈</m:mo> <m:mrow>
+     <m:mfrac>
+      <m:mi>A</m:mi>
+      <m:mrow>
+       <m:msup>
+        <m:mn>2</m:mn>
+        <m:mrow>
+         <m:mi>H</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+        </m:mrow>
+       </m:msup>
+       
+      </m:mrow>
+     </m:mfrac>
+     
+    </m:mrow> <m:mo>⌉</m:mo></m:mrow><m:mo>−</m:mo><m:mn>1</m:mn>
+   </m:mrow>
+   <m:mrow>
+    <m:msup>
+     <m:mn>2</m:mn>
+     <m:mrow>
+      <m:mi>L</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+     </m:mrow>
+    </m:msup>
+    
+   </m:mrow>
+  </m:mfrac>
+  
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>
+</equation><para id="element-823">where A is the HDR color matrix, H is the HDR (source) bitrate, and L is the LDR (destination) bitrate.</para><example id="element-608"><para id="element-670">
+		So in the case of 32-bit to 8-bit transformation, we would have: <m:math>
+ <m:semantics>
+  <m:mfrac>
+   <m:mrow>
+    <m:mrow><m:mo>⌈</m:mo> <m:mrow>
+     <m:mfrac>
+      <m:mi>A</m:mi>
+      <m:mrow>
+       <m:msup>
+        <m:mn>2</m:mn>
+        <m:mrow>
+         <m:mn>32</m:mn><m:mo>−</m:mo><m:mn>1</m:mn>
+        </m:mrow>
+       </m:msup>
+       
+      </m:mrow>
+     </m:mfrac>
+     
+    </m:mrow> <m:mo>⌉</m:mo></m:mrow><m:mo>−</m:mo><m:mn>1</m:mn>
+   </m:mrow>
+   <m:mrow>
+    <m:msup>
+     <m:mn>2</m:mn>
+     <m:mrow>
+      <m:mn>8</m:mn><m:mo>−</m:mo><m:mn>1</m:mn>
+     </m:mrow>
+    </m:msup>
+    
+   </m:mrow>
+  </m:mfrac>
+  
+ <m:annotation encoding="MathType-MTEF">
+ </m:annotation>
+ </m:semantics>
+</m:math>
+
+	</para><para id="element-308">Using this approach, we have the following result:</para><figure id="element-410"><media id="idp1848768" alt=""><image src="../../media/quantizing.jpg" mime-type="image/jpeg"/></media>
+	<caption>Quantizing Operator</caption></figure>
+</example><para id="element-949">Now that we have explored the most basic operator that just takes the HDR image straight back down to the LDR range without any intelligent methods to preserve the most information and dynamic range, we can explore more advanced operators in the following modules.  For example, one way to improve upon this is to "move" the average brightness around of the entire image, so that if it is overexposed, we can correct to some extent to preserve the most amount of detail in the resulting LDR image.  Beyond that, we can look at regions of the HDR image and map them down in an intelligent manner as to preserve the most amount of information in small areas of the resultant LDR image.</para>   
+  </content>
+  
+</document>

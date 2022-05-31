@@ -1,0 +1,62 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Envelope Detection in Speech Signals</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>c944c56d-860b-4ce9-bec3-c9b15bc3a168</md:uuid>
+</metadata>
+<content>
+<section id="id3891375">
+<title>Envelopes – Finding Syllables within Words</title>
+<para id="id8078557">Once the system actually reads in the values
+from a voice signal, the most important thing to do is figure out
+how the signal is broken up. One of the more obvious methods is
+breaking a word or series of words into syllables. Although
+syllables are somewhat difficult to read, as they still have
+consonants, the vowel sounds make up the majority of the syllables,
+not to mention the louder part of these signals. As a result,
+breaking the words into syllables is a good start.</para>
+<para id="id8635960">After we pass the signal through a smoothing,
+boxcar filter, there is a clear definition of the peaks. However,
+the question still remains – how do you pick up one of these peaks?
+In essence, the goal is to choose a correct threshold amount to
+start reading signals. The most important thing is managing to
+differentiate the numerous peaks while at the same time being able
+to keep the peaks for each and every signal. For example, with a
+threshold that is too low, noise may get picked up. More likely,
+however, is that with a threshold too high, some syllables may be
+ignored (figure 1).</para>
+<figure id="id8485198"><title>Low Threshold Envelope Detector</title>
+<media id="idp1166496" alt=""><image src="../../media/Graphic1-aa99.png" mime-type="image/png"/></media>
+<caption>An envelope with a low threshold value.  The first syllable is not even detected, and will not be used for any analysis of the speech signal.</caption>
+</figure>
+<para id="id3411658">As is evident, the first syllable gets
+completely ignored. As a result, it does not factor into the actual
+determination of who the speaker is. However, through testing, our
+group was able to discern a value that will achieve the desired
+results. Because the signal is normalized prior to being run
+through the enveloping functions, that threshold will not change
+for different input volumes. Thus, our desired signal output (with
+smoothing) will look something like the signal in figure 2.</para>
+<figure id="id3175035"><title>Correct Envelope Detector</title>
+<media id="idm817696" alt=""><image src="../../media/Graphic2-e051.png" mime-type="image/png"/></media>
+<caption>An envelope detector with the correct threshold value.  All the syllables are accepted and cut-off at the proper points.</caption>
+</figure>
+<para id="id3179528">This ends up being a fairly nice solution to
+our problem, with one problem – the threshold cuts off the signal
+at sample values, not time values. We need time values to analyze
+the actual frequencies of the results so we can look at the formant
+sounds within each syllable. Thus, we go back to our initial timed
+signal rather than the sampled signal, and we get our desired
+results (figure 3).</para>
+<figure id="id5957309"><title>Enveloped Speech Signal</title>
+<media id="idm8367760" alt=""><image src="../../media/Graphic3-ac55.png" mime-type="image/png"/></media>
+<caption>Our initial speech signal with an envelope.  In this case, the start point of the envelope to the end point of each envelope correspond to the start and end points of the syllables.</caption>
+</figure>
+<para id="id5487169">Most of the signal is preserved, and all of
+the vowel sounds are preserved by the signal as well – most of what
+is cut off by the signal is a consonant. Now, we have multiple
+signals, each of which are almost entirely vowel sounds from our
+syllables. However, we have to go back to our initial problem – how
+do you analyze the vowel? How do you even interpret a signal like
+this?</para>
+</section>
+</content>
+</document>

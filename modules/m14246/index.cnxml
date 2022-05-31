@@ -1,0 +1,15 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Exploring High Dynamic Range Imaging: §3 Approach</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>5bd9f6df-b8db-4ad5-932a-c7466baad3d5</md:uuid>
+</metadata>
+<content>
+<para id="id6408219">§3 Approach</para>
+
+<para id="id6408247">Two main cores must first be implemented
+before any further developments can occur; the image creation
+algorithm that would produce a high bit depth image from a set of
+low bit depth images, and a simple tone mapping algorithm that we
+can build upon.</para>
+
+</content>
+</document>

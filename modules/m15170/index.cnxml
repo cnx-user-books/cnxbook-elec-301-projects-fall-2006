@@ -1,0 +1,21 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Sample Echo Removal Code for Matlab</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>0f07ffc7-a75b-4af7-a6b0-b0823ee89c9a</md:uuid>
+</metadata>
+<content>
+<section id="id5086373">
+<title>Sample Matlab Code</title>
+<section id="id3198679">
+
+<para id="id3198684"><media id="idm4447600" alt=""><download src="audio_recover.m" mime-type="application/octet-stream"/></media>This matlab
+file performs wiener deconvolution on an audio signal and a
+previously determined room response</para>
+<para id="id3926816"><media id="idm232480" alt=""><download src="normal_deconvolution.m" mime-type="application/octet-stream"/></media>
+This matlab file performs deconvolution on a 1 dimensional output
+signal and a 1 dimensional known filter to recover the systems
+input. It can also be used to recover the filter of the system if
+given the known input instead of the known filter.</para>
+</section>
+</section>
+</content>
+</document>

@@ -1,0 +1,13 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Pocket Change: Output Display</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>af6146d4-795a-487c-bb3d-87491c38b8a6</md:uuid>
+</metadata>
+  <content>
+    <para id="element-445">Now that we have all of the coins matched up to their counterparts in the database, we need to display the results. Since we've extracted metadata from the database, we can display various types of information in addition to simply the name of the coin. For example, since each coin is classified as being either a 'heads' or a 'tails,' we can even run statistics on what percentage of the coins are face up. A simple display mechanism is to output the result strings to the command line using the DISP() command. </para><para id="delete_me">There are two easy ways to form strings. Let's say you want to output the string 'Coin 1 is a US Quarter.' and you know the index of the coin, coinIndex = 1, and the string of the type of coin from the database, name = 'US Quarter'. You can do this using concatenation in Matlab, as you would any other matrix, taking into account the conversion between numbers and ASCII: </para><code display="block" id="idp11908896">disp(['Coin ' num2str(coinIndex) ' is a ' name '.'])</code><para id="element-827">Alternatively, if you're familiar with C, you can use the SPRINTF() command:</para><code display="block" id="idp10632752">disp(sprintf('Coin %d is a %s.', coinIndex, name))</code><para id="element-177">In addition to the command line, it is useful to display the name of the coin directly on the image of the coin. We can accomplish this with the TEXT() command. Pass in the centers of the coins, the identification string from the database, and some additional optional parameters to get the string to appear better: </para><code display="block" id="idp11832400">text(circen(N, 1), circen(N, 2), label, 'HorizontalAlignment', 'center', 'FontWeight', 'bold', 'Color', 'red')</code><figure id="element-90"><title>Labeled Coins</title>
+<media id="idp2082800" alt=""><image src="../../media/Coins Result Small.jpg" mime-type="image/jpeg"/></media>
+<caption>
+Display the identification of the coins graphically.
+</caption></figure><para id="element-226">From these example displays of results, you should be able to create your own types of output. Be creative!</para>   
+  </content>
+  
+</document>

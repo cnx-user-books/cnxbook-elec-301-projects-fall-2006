@@ -1,0 +1,9 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Background</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>9cfdd02c-d06e-42a0-83df-fb3c1d590a3d</md:uuid>
+</metadata>
+  <content>
+    <para id="element-535">Imagine you are in your car, listening to the radio and suddenly you hear a song that you like but missed the title and the artist name. Still, you want to know more about the music. This is a situation in which audio fingerprinting technology can come into play. By making “fingerprints” of unknown audio clips, an audio fingerprinting system can perform very fast retrieval from the database already containing “fingerprints” of a large number of songs and identify the audio clip in a short time. It has already found applications in music library organization, copyright filtering for file sharing companies like Napster, and song recognitions.</para><para id="element-804">In our project, we present a highly robust and dependable system that can effectively identify an audio clip from a database of songs and return identification information such as the title and artist name. The proposed system stores “fingerprints of audio files in a database. When a match request is initiated, the system takes a fingerprint of the file to be searched for and returns song information based on fingerprint comparisons.</para>   
+  </content>
+  
+</document>

@@ -1,0 +1,62 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Image Registration using Projective Flow</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>317dcdd8-9ee1-47f7-ac77-732781eae1de</md:uuid>
+</metadata>
+  <content>
+<section id="ov">
+<title>Overview</title>
+    <para id="element-76">Superresolution is based on the idea that images with slight shifts can be aligned and combined into a single, higher resolution image.  While aligning images with respect to one another may not seem too complex at first, there are a number of technical details that muddy the waters.  Additionally, superresolution requires registration results that are accurate to the subpixel level.  While an error of one or two pixels sounds just fine, it would lead to a poor quality image after combination.</para> 
+</section>
+<section id="mot">
+<title>Motivation</title>
+<para id="element-412">Let's first look at the impact of registration before delving into the details of the algorithm we chose.  Consider the following two test images:</para><figure id="element-437"><title>Registration Test Images</title>
+<subfigure id="test1">
+<media id="idp8494832" alt=""><image src="../../media/testa.png" mime-type="image/png"/></media>
+</subfigure>
+<subfigure id="test2">
+<media id="idp7293632" alt=""><image src="../../media/testb.png" mime-type="image/png"/></media>
+</subfigure>
+<caption>Two slightly shifted images (Source: http://lcavwww.epfl.ch/software/superresolution/superresolution_dataset1.tar.gz)</caption></figure><para id="element-240">While these two images may appear to be the same, they are actually just slightly different from each other.  While we could try to combine the images as they are now, we need to register them first to achieve a better result.  Below two difference graphs illustrate the impact of registration, the first showing the difference before registration, and the other after.</para><figure id="element-836"><title>Difference Graphs</title>
+<subfigure id="diff1">
+<media id="idp12754192" alt=""><image src="../../media/prereg.png" mime-type="image/png"/></media>
+<caption>Before registration</caption>
+</subfigure>
+<subfigure id="diff2">
+<media id="idp11282656" alt=""><image src="../../media/postreg.png" mime-type="image/png"/></media>
+<caption>After registration</caption>
+</subfigure></figure><para id="element-103">Even though it is hard to see a visible difference when viewing the two images separately, the difference graphs above show how registration can still detect difference and account for them.</para></section>
+<section id="algo">
+<title>Algorithm</title>
+<para id="element-273">While there are a number of different techniques that can be used to register images, many of them are <emphasis>feature-based</emphasis>.  They attempt to track the same set of points as they move from image to image.  This can work well, but only if the points are detect accurately each time.  Instead, we chose to use a <emphasis>featureless</emphasis> algorithm, which avoids feature points by using the flow of all pixels in the image.  It improves upon the optical flow concept discussed in a previous module by allowing for changes in translation, rotation, scale, pan, and tilt between each image.  The algorithm is detailed below.</para><list id="element-349" list-type="enumerated"><item>Calculate the vertical, horizontal, and time derivatives between the two images.  This is same process mentioned in <link document="m14208">Optical Flow</link>.</item>
+<item>From these spatiotemporal derivatives, estimate an approximate model (q) of the projective parameters.  There are several models that can be used, such as bilinear and pseudo-projective.  The system used to estimate the bilinear model is shown below.
+<figure id="bimod"><title>Bilinear Approximation Model</title>
+<media id="idp1354688" alt=""><image src="../../media/bimodel.png" mime-type="image/png"/></media>
+<caption>System of equations that relates derivative to the bilinear approximation model (Source: 1)</caption></figure>
+</item>
+<item>Using the four corners of the image, calculate their new coordinates from the approximate model.  In the formulas for the bilinear model below, <m:math>
+   <m:msub>
+    <m:mi>u</m:mi>
+    <m:mi>m</m:mi>
+   </m:msub>
+   <m:mo>+</m:mo><m:mi>x</m:mi>
+</m:math>
+and <m:math>
+   <m:msub>
+    <m:mi>v</m:mi>
+    <m:mi>m</m:mi>
+   </m:msub>
+   <m:mo>+</m:mo><m:mi>y</m:mi>
+</m:math> denote the new x and y coordinates respectively.
+<figure id="coord"><title>Bilinear Coordinate Formulas</title>
+<media id="idp13161744" alt=""><image src="../../media/newcoords.png" mime-type="image/png"/></media>
+<caption>Relates old and new coordinate via approximate (q) parameters (Source: 1)</caption></figure>
+</item>
+<item>These old and new coordinates now completely determine the projective parameters in the exact model (p).</item>
+<item>Apply these new parameters (p) to one of the images and iterate until the difference is negligible.</item></list>
+</section>
+<section id="acc">
+<title>Improving Accuracy</title>
+<para id="element-858">To get better results, we can create a multi-resolution pyramid for each image first.  This means that we generate several levels of increasingly blurry images.  Starting at the blurriest level, we apply several iterations of the algorithm as described above.  Then, we move up to a less blurry level and repeat, but we carry over the result from the previous level and use that as our starting point.</para></section>
+  </content>
+  
+</document>

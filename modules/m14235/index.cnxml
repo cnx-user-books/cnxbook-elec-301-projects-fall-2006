@@ -1,0 +1,40 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Match Recognition System</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>1512e0ca-73d7-4fc3-9f54-f45fec39683d</md:uuid>
+</metadata>
+<content>
+<para id="id10694069">To implement the Match Recognition System for
+our program, we used a basic matched filter that compares the input
+song’s fingerprint to each fingerprint in the database. Because we
+are using compact representations for each song, the matched filter
+will not take an insane amount of time to complete. In order to
+improve the speed of the algorithm even more, we decided to
+implement the filter in the frequency domain since it is involves
+simple matrix multiplication.</para>
+<para id="id10686558"/>
+<para id="id10565604">First of all, the input song goes through the
+Audio Fingerprint Generator so that we have its compact
+representation. Next, our system normalizes this representation,
+takes its FFT, and compares it to the normalized FFT of each of the
+fingerprints in the database. At this point the fingerprints are
+all in the frequency domain, so the only thing left to do to
+implement the matched filter is to multiply the input song’s
+representation with each one of the database representations. This
+process requires zero-padding the shorter signal in the comparison
+so that the two matrices are the same dimensions before actual
+multiplication. The max(max()) function in Matlab takes the maximum
+value in the matrix, which corresponds to the matched filter
+“spike”. The database signal that returns the largest spike when
+compared to the input signal is our most probable match and the
+database index of this matched song is used to index the name of
+that corresponding song from the array that holds the names of all
+database songs. Our system also does this process for the second
+highest match. The output of the Match Recognition System is just
+the two most probable match titles, and their corresponding spike
+values. This allows users to see the confidence level for each
+match.</para>
+<figure id="id10678596">
+<media id="idm3547376" alt=""><image src="../../media/Graphic1-f03c.png" mime-type="image/png"/></media>
+</figure>
+</content>
+</document>

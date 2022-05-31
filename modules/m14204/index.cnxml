@@ -1,0 +1,40 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>The Final Step: Identifying the Speaker</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>ad353453-c433-4310-ab4c-f8d3ad3e8244</md:uuid>
+</metadata>
+<content>
+<section id="id5289470">
+<title>Formant Comparisons and Identifying the Speaker</title>
+<para id="id9326389">After everything is broken down, all that is
+left for the system to do is the easy part – make a simple
+comparison between the input formants and the formant in the
+database. The first step is in determining which vowel is actually
+being spoken. This is simply an examination of the location of the
+first two formant peaks. If they both fall within the range of a
+specific vowel’s first two formants, they are representing that
+vowel. That range is stored within the database. These ranges are
+very well defined for each individual vowel and are adjusted to the
+members of the group. For example, the first formant of a vowel has
+a range that will include formants at frequencies just above the
+highest frequency first formant in the group and just below the
+lowest frequency first formant. If it does not fall in the range of
+the vowel, that vowel is not the correct one, and it continues to
+try the next vowel. It repeats this process until either it finds a
+vowel or goes through all vowel sounds in the database. If the
+formants do not fall within any particular formant range, the vowel
+sound will be ignored.</para>
+<para id="id7683214">The second step is the actual comparison. The
+frequency response of the input vowel sound is multiplied in a dot
+product with each member’s previously stored frequency response for
+the vowel. This is the vowel that was determined in the first step.
+A resulting score matrix is produced from the dot product. The
+score matrix will output a value from 0 to 1, with 1 being a
+perfect match and a 0 being an entirely incorrect match.</para>
+<para id="id11300057">This process is repeated for each vowel sound
+in the word. The score matrices are then added together, and the
+system identifies the speaker as the individual with the highest
+score. If, however, that individual does not pass a threshold
+value, then the system determines there is no match.</para>
+</section>
+</content>
+</document>

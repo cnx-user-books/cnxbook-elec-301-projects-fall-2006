@@ -1,0 +1,30 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Superresolution Testing and Results</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>a57202f2-4d2f-483c-83c3-04cb00ae7933</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">The following images illustrate the effects of the projective flow and Delaunay triangulation algorithms we used to implement image superresolution.  Our testing process was as follows:</para><list id="element-592" list-type="enumerated"><item>Take several pictures of the same object with a digital camera (no tripod -&gt; images will need registration).</item>
+<item>Downsample the images to create low-resolution (LR) copies.</item>
+<item>Register all LR images with respect to the first LR image.</item>
+<item>Interpolate to obtain the HR image.</item></list><para id="element-67">We also tested using LR images from external sources.  An example is given below.</para><list id="element-757" list-type="bulleted"><item>Original images:
+<figure id="fig1"><media id="idp8442928" alt=""><image src="../../media/castle1.png" mime-type="image/png"/></media>
+  <caption>LR image 1 (Source: 7)</caption>
+</figure>
+<figure id="fig2"><media id="idp195360" alt=""><image src="../../media/castle2.png" mime-type="image/png"/></media>
+  <caption>LR image 2 (Source: 7)</caption>
+</figure>
+<figure id="fig3"><media id="idp11405520" alt=""><image src="../../media/castle3.png" mime-type="image/png"/></media>
+  <caption>LR image 3 (Source: 7)</caption>
+</figure>
+<figure id="fig4"><media id="idp13792672" alt=""><image src="../../media/castle4.png" mime-type="image/png"/></media>
+  <caption>LR image 4 (Source: 7)</caption>
+</figure></item>
+
+
+<item>HR image result:
+<figure id="fig5"><media id="idp13609104" alt=""><image src="../../media/resavg.png" mime-type="image/png"/></media>
+  <caption>HR image</caption>
+</figure></item></list><para id="element-878">The MATLAB code used to generate the above HR image is available <link resource="matlab_code.zip">here</link>.</para>   
+  </content>
+  
+</document>

@@ -1,0 +1,57 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Exploring High Dynamic Range Imaging: §3.5 Adaptive Gain Control Local Operator with Edge Detection</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>9bafa507-da1f-45d5-a220-b47a01248da4</md:uuid>
+</metadata>
+<content>
+<para id="id4342838">To lessen the blurring effect on the adaptive
+gain control operator, we modified Pattanaik’s algorithm so that
+edges can be detected. In the case where a neighbor pixel is “too
+different” in intensity from the pixel being mapped, a counter is
+incremented and counts the maximum number of pixels that can be
+“too different” before the inspected pixel is not mapped at all
+using the averaged obtained from its neighbors. In this case, the
+old luminance value is simply assigned to this pixel, which is
+mapped down to a lower color depth linearly by dividing by the
+brightest value in the image. In the following examples, the “max
+difference” parameter refers to the maximum contrast ratio between
+a neighboring pixel and the pixel being mapped, above which a
+counter is incremented. The “number different” parameter refers to
+the maximum value of said counter, above which the local average
+can be ignored when mapping a pixel. As expected, increasing the
+“max difference” parameter increases the threshold at which edges
+are preserved, thereby producing a blurrier image. A small value
+for “max difference” keeps finer details intact as slighter changes
+would prompt the mapping algorithm to ignore local values.
+Increasing the “number different” parameter has a similar effect as
+increasing the “max difference” parameter; as more values must
+reach the threshold before the local average is ignored, the local
+average is used more often to map image pixels, causing the image
+to become more homogenous. Blurring the image by increasing the
+“number different” parameter, however, seems to keep the details in
+harsher edges more intact compared to blurring with the “max
+difference” parameter. This should make sense (pixels at the edge
+of a harsh transition encounter a greater number of neighboring
+pixels with very different luminance values).</para>
+<para id="id8322089">
+<figure id="id4969857"><media id="idp7344912" alt=""><image src="../../media/Graphic1-ba85.png" mime-type="image/png"/></media>
+<caption>Threshold = 5, Radius = 2, Max Difference = 1.1, Number Different = 1</caption></figure>
+</para>
+
+<figure id="id8324427"><media id="idp11639872" alt=""><image src="../../media/Graphic2-c525.png" mime-type="image/png"/></media>
+<caption>Threshold = 5, Radius = 2, Max Difference = 1.35, Number Different = 1</caption></figure>
+
+<para id="id5064211">
+<figure id="id8153790"><media id="idp7594720" alt=""><image src="../../media/Graphic3-dd0a.png" mime-type="image/png"/></media>
+<caption>Threshold = 5, Radius = 2, Max Difference = 1.75, Number Different = 1</caption></figure>
+</para>
+
+<para id="id5062521">
+<figure id="id5337951"><media id="idp1151392" alt=""><image src="../../media/Graphic4-7a97.png" mime-type="image/png"/></media>
+<caption>Threshold = 5, Radius = 2, Max Difference = 1.1, Number Different = 3</caption></figure>
+</para>
+
+<figure id="id6336017"><media id="idp6430192" alt=""><image src="../../media/Graphic5-fbe4.png" mime-type="image/png"/></media>
+<caption>Threshold = 5, Radius = 2, Max Difference = 1.1, Number Different = 10</caption></figure>
+
+</content>
+</document>

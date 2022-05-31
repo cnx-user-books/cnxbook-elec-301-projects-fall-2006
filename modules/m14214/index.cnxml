@@ -1,0 +1,31 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Bose-Lertrattanapanich Pixel Interpolation</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>56ec249b-307d-44c9-8a3e-de9a9cc8fe8f</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">In data processing applications, it often occurs that certain points on a surface are known and are all samples of a common function (ex: an image).  However, if these samples are too few for a particular purpose (ex: viewing an image in high resolution), then the question arises: how can the value of this function at other points be found?  If there is no formula that, given (x,y) will return the function's value, then such a formula must be approximated.  Interpolation is the generation of such an approximation.</para><para id="element-507">The task of creating a high-resolution (HR) image from a set of low-resolution (LR) images requires interpolation.  One method, Bose-Lertrattanapanich interpolation, is described below.</para><list id="element-25" list-type="enumerated"><item>Given a set of LR images and a registration algorithm, apply the registration algorithm to obtain a set of non-uniformly distributed points.  These points represent the relative locations of all LR pixel values.</item>
+
+<item>Construct a Delaunay triangulation of the points.
+
+<figure id="element-872"><title>Delaunay Triangulation Example</title>
+  <media id="idp9216464" alt=""><image src="../../media/60triangulation.bmp" mime-type="image/bmp"/></media>
+  <caption>MATLAB Delaunay triangulation of registered points from a set of LR images.</caption></figure></item>
+
+<item>Estimate the gradient vector of image intensity (dz/dx,dz/dy) at each triangle vertex from the normal vectors of surrounding regions.
+
+<figure id="element-351"><title>Normal Vector at a Vertex</title>
+  <media id="idp8423792" alt=""><image src="../../media/normalvec.bmp" mime-type="image/bmp"/></media>
+  <caption>The gradient vector at a vertex (dz/dx,dz/dy) can be estimated from the normal vector at the vertex: n = [nx,ny,nz].  n is calculated by summing the normal vectors of the surrounding triangle patches weighted by their areas, then dividing this sum by the total area of these triangles.  The result is dz/dx = -nx/nz, dz/dy = -ny/nz. (Source: 2)</caption></figure></item>
+
+<item>Approximate the image intensity values (z) for each triangle patch by a continuous surface.
+
+<figure id="element-352"><media id="idp7625680" alt=""><image src="../../media/cequation.bmp" mime-type="image/bmp"/></media>
+  <caption>Bivariate polynomial to model surface; c values are based on the gradient vectors. (Source: 2)</caption></figure></item>
+
+<item>For each point (x,y) on the HR grid, apply the appropriate polynomial to calculate the pixel value.</item></list>
+
+<para id="element-791">There are many simpler implementations of the last three steps of this process.  The algorithm our code implements generates a constant function for each triangle patch, rather than a bivariate polynomial.  In our implementation, the interpolated pixel value in each triangle patch (pT) is the average of the pixel values at the three vertices of each triangle (pA,pB,pC):
+pT = (pA + pB + pC)/3.  This function is less accurate than the bivariate polynomial, but is more intuitive and cost-efficient to implement.</para>   
+  </content>
+  
+</document>

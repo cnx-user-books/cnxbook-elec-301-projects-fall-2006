@@ -1,0 +1,83 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Pocket Change: Introduction and Background</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>d35b7dcf-ab04-4a0a-93b4-9033104b35f0</md:uuid>
+</metadata>
+<content>
+<section id="id8807740">
+<title>Introduction</title>
+<para id="id8734268">Many tedious processes can be automated using computers.  Counting and sorting objects, especially in large numbers, is an area where humans are simply less efficient.  Applying this knowledge to the problem of identifying and counting coins, a software system can be developed to recognize and tally a handful of change.  The following modules describe the challenges associated with building a system that accomplishes these tasks.  Good luck on your journey!</para>
+</section>
+<section id="id9028524">
+<title>Background</title>
+<para id="id10075890">Object recognition and identification are
+important aspects of machine vision. Coin recognition in particular
+poses a special challenge for two reasons: 1. Coins are notoriously
+difficult to photograph. They are reflective, and there are
+trade-offs in evenness of lighting vs. visibility of details when
+determining lighting. 2. Coins are circular objects. Unlike playing
+cards, where long edges can be determined and the original image
+can be transformed to a standard angle from which comparisons can
+be made, coins can have arbitrary orientations and there is no way
+to determine them without knowing the identity of the coin.</para>
+</section>
+<section id="id8115137">
+<title>Process Overview</title>
+<para id="id8762219">There is a systematic process that the machine
+must follow to determine the identity of a coin. The rest of this
+course will go into greater detail in each step.</para>
+<section id="id8545804">
+<title>Image Acquisition</title>
+<para id="id5343028">First, an image must be acquired. You might
+imagine that this part of the process would be the simplest, but it
+actually ended up being one of our steps that was most fraught with
+difficulties. Lighting ends up becoming a big issue, leading to
+misidentification in systems with uneven lighting and necessitating
+the use of diffuse light sources.</para>
+</section>
+<section id="id9570142">
+<title>Circle Recognition</title>
+<para id="id5486057">Once the image is in the computer, the first
+step is to locate the coins in the scene. This can be accomplished
+using off-the-shelf code that implements a feature extraction
+technique known as the Circular Hough Transform. Feeding the
+function the image and a range of radii to detect, it will, with
+high accuracy, return the radius and center of every circle (coin,
+in this case) in that range in the picture.</para>
+</section>
+<section id="id9026554">
+<title>Coin FFT Creation</title>
+<para id="id9166075">Radius and center data in hand, now we get to
+the meat of the project: recognizing the coins. The key difficulty
+in recognizing coins is their very circular nature. As mentioned
+previously, they can have any phase. Normally you might use a
+matched filter to try to determine identity of an object (the
+filter with the greatest resulting magnitude is the filter of the
+coin). If you were going to do that in this case, you would need a
+separate matched filter not only for each coin surface, but for
+each coin surface at every possible rotation. We take a different
+approach. Exploiting the properties of Fourier transforms and going
+through an “unwrapping process”, we are able to create unique FFTs
+that are orientation agnostic.</para>
+</section>
+<section id="id6767610">
+<title>Coin Identification</title>
+<para id="id9923530">Once we have the FFT of the coin, we have to
+determine which coin it is. Beforehand, we create a
+database of FFTs of known coins we want to recognize. Then, using
+one of many possible comparison algorithms, we compare the FFT of
+the current coin to each coin in the database, selecting the
+comparison with the closest match as the identity of the
+coin.</para>
+</section>
+<section id="id10541735">
+<title>Output Display</title>
+<para id="id3075571">Once the information about each coin is known,
+we can display it in any way we want. Because we record lots of
+metadata for each coin, in addition to the sum we can display all
+sorts of interesting statistics about the coins in the image. We
+also created a way to allow rapid error checking by superimposing
+the values of the coins onto the image of the coins.</para>
+</section><figure id="element-558"><title>Flow chart</title> <media id="idm3338304" alt=""><image src="../../media/flow.png" mime-type="image/png"/></media> <caption>This is a pictorial representation of the process described above.</caption></figure>
+</section>
+</content>
+</document>

@@ -1,0 +1,11 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Astronomical Image Deconvolution: Remarks</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>28fd96d4-b569-4743-a52c-955a01c3f07c</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">Our Weiner filter MISO-D image processing technique did indeed produce what we wanted; a final image with reduced noise and distortion, which more closely approximates the object originally imaged then the raw data images. The relative computational simplicity of this approach allows us to efficiently create improved images from even very large data sets.
+</para><para id="element-3">However, the process we used has several drawbacks, which might make it unsuitable in obtaining optimal estimates of our original object. First off, our assumption that both the 
+distorting filter and the noise were Gaussian in their distribution is a very low grade approximation to their possibly much more complex characteristics; an approach which uses statistical analysis to obtain closer approximations of these two distributions would be more effective, if more computationally complex. Also, the use of Weiner filters for astronomical images will not be optimal, because such images tend to have sharp discontinuities better suited to filtering by techniques which employ wavelets.</para>   
+  </content>
+  
+</document>

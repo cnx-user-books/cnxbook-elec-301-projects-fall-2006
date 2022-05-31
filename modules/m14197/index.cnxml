@@ -1,0 +1,30 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Conclusions and Thoughts on Speech Recognition</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>89460a59-2afd-4b35-8dc1-9301be1fdcad</md:uuid>
+</metadata>
+<content>
+<section id="id3503008">
+<title>Conclusions</title>
+<para id="id3583519">Initially looking at the experiment, the plan
+was to have a text-dependent system, or a speaker verification
+system, or something that could actually determine what word was
+being spoken to the system by the user. It has become painfully
+clear that that would be a very difficult task to accomplish, and
+would require much more time, effort, and background on the subject
+than we could possibly acquire in a short period of time. Our
+system was, for what it did, relatively successful – it found
+vowels with regularity, and it identified speakers at a rate of
+almost 70% - a very good rate for a basic system.</para>
+<para id="id3527370">As obvious, however, is how much more in depth
+speech recognition is than the scope of our project. Being able to
+determine what is spoken or who a speaker is with near perfect
+accuracy is an extremely formidable task. Preventing another
+individual from breaking into the system can be just as difficult,
+as it requires a system dependent on text and a system that will
+not accept anything other than what it specifies. Our initial idea
+of being able to determine what word was being spoken is, at best,
+naïve, and at worst not at all feasible. With that said, however,
+the end results were very acceptable.</para>
+</section>
+</content>
+</document>

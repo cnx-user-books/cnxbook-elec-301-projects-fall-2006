@@ -1,0 +1,10 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Astronomical Image Deconvolution: Weiner Filter Approach</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>96ffb232-2c54-45c3-a2e3-64ed1deb6cda</md:uuid>
+</metadata>
+  <content>
+    <para id="element-930">Of the several different techniques currently used for MISO-D type problems, all share a similar two-step strategy: the problem is first reduced to a SISO-D problem through the use of statistical tools, and then an appropriate method is then used to solve the now simplified problem. Our strategy will employ Weiner filters as a SISO-D technique to look at each individual data image and acquire an estimate of the original object; we will then obtain a single estimate of our original object by using a noise-weighted average of our previous estimates.
+      </para><para id="delete_me">Several other techniques have been employed in the solving of SISO-D and MISO-D problems. Notable SISO-D techniques are wavelet and curvelet based approaches, as well as iterative solutions. These solutions were developed because Fourier based approaches (such as Weiner filters) do not work particularly well for discontinuous signals. Also, several new strategies have been looked at to convert MISO-D problems to SISO-D problems, including the use of sufficient statistics.</para><para id="element-167">Our choice of a Fourier-based strategy involving Weiner filters was made due to the high amount of noise in our signals (which the Weiner filter acts to reduce), as well as their ease of use; many of the more optimal solutions are also far more complex, and beyond the scope of an undergraduate course.</para>   
+  </content>
+  
+</document>

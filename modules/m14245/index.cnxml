@@ -1,0 +1,31 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Exploring High Dynamic Range Imaging: §2 Background</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>af1b779a-f359-42b4-ade8-bd1f6dedbef8</md:uuid>
+</metadata>
+<content>
+<para id="id5226723">There has been much research being done in the
+area of HDRI, and the vast majority of this research is focused on
+tone mapping. Most of these tone mapping algorithms (often called
+“operators”) can be divided into two categories. Global operators
+determine how the image is mapped by taking into account all the
+values in the high color depth image. Local operators map each
+pixel or group of pixels by taking into account a subset of the
+information in the high bit depth image.</para>
+<para id="id5226731">Global operators are generally fast and often
+don’t cause the image to lose detail. Local operators tend to
+perform the tone mapping better, compressing contrast to a greater
+degree at the expense of slower operation and, in some cases,
+blurring of the details or halos around high contrast regions.
+Let’s explore both types of operators in MATLAB; the following sections will
+introduce algorithms in existence today as well as our own unique
+functions and modifications to them.</para>
+<para id="id5252173">One thing to take note of before we start is that images in MATLAB are represented as matrices. Color images are made up of three matrices, each describing the intensity of a red, blue, and green component. The brightness values of the elements in these matrices may either be represented in double form in a range from 0 to 1, or with integer values from 0 to 255.</para>
+<para id="id5226549">The Stanford Memorial Church image used
+throughout this report has been adopted as a standard test image in
+many other HDR research articles, and was authored by Paul Debevec.
+It is available as a .HDR radiance map for download 
+<link url="http://www.debevec.org/Research/HDR/">here</link>.</para>
+<para id="id5226572">The .HDR file has been divided into 20 images
+for use in this report and can be found in section 8, along with the source code.</para>
+</content>
+</document>

@@ -1,0 +1,49 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Detecting Note Onsets</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>841aa041-7a7c-4a69-b73e-d55db50b08c5</md:uuid>
+</metadata>
+<content>
+<para id="id11149392">A music file can be stored on a computer in
+the form of a vector, with each successive element of the vector
+representing the next sample taken from the song. A song lasting s
+seconds, sampled at a frequency of f, is represented by a vector of
+length s*f. CD quality music is sampled at a rate of 44.1kHz,
+causing even short songs to take up large amounts of space.</para>
+<para id="id10689812">A recorded piano note is usually very
+sinusoidal, has a sharp, almost immediate rise, and a slow and
+steady exponential decay. In order to determine the times during a
+recording of a piano when a note is hit, the sharp rise of a note
+is taken advantage of through an edge-detection filter.</para>
+<para id="id11179801">The first step in this process is the take
+the absolute value of the signal. This gives the signal a non-zero
+absolute value, which gives the signal a detectable
+envelope.</para>
+<figure id="id11252750">
+<media id="idm2159728" alt=""><image src="../../media/abs2.png" mime-type="image/png"/></media>
+</figure>
+<para id="id11023061">Next, this signal is convolved with an
+edge detection filter using fast-convolution techniques. A filter of length 5200 for a song sampled
+at 44.1kHz seems to work very well. The filter is the first
+derivative of a Gaussian pulse, and will output a positively valued
+spike for positive edges, and a negatively valued spike for
+negative edges, or drop-offs.</para>
+<figure id="id11187753">
+<media id="idm9768912" alt=""><image src="../../media/gaussian.png" mime-type="image/png"/></media>
+</figure>
+<figure id="id10997083">
+<media id="idm3584000" alt=""><image src="../../media/points.png" mime-type="image/png"/></media>
+</figure>
+<para id="id10673233">The last step is simply a matter of assigning
+peaks to note depressions. Basically, every relative minimum that
+occurs above a certain threshold value (0.1, in this case) is
+counted as a note depression. Negatively-value peaks are largely
+artifacts due to notes decaying too steeply, and are thus ignored.
+The following plot places red stems for every detected note
+depression over the original song where the note most likely
+occurred. It is simple to tell that in this case, the note
+depression detection went without error.</para>
+<figure id="id10840946">
+<media id="idm2741456" alt=""><image src="../../media/scalehits.png" mime-type="image/png"/></media>
+</figure>
+</content>
+</document>

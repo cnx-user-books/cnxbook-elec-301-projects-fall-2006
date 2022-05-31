@@ -1,0 +1,38 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Pocket Change: Improvements</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>b973e1fc-4022-4fbb-a471-90b9a769ce7b</md:uuid>
+</metadata>
+  <content>
+
+<section id="overview">
+<title>Overview</title>
+    <para id="delete_me">Originally, the goal for the project was for it to be able to display a dollar value for an amount of change in realtime. Any changes to the amount, adding or removing coins, should be reflected immediately onscreen. Our goal of recognizing and counting coins was a moderate success.  However, definite improvements can be made.</para><para id="element-441">Our accuracy rates range from 50% in worst case case scenarios with poor lighting and dirty or tarnished coins, to 100% with our composite test images. Clearly, the problem does not lie with the algorithm, but rather the system’s ability to capture realtime data and filter out the noise as much as possible. To address these issues, we should look at the flowchart of the system from bottom to top.</para>
+</section>
+<section id="Device">
+<title>Improvements to the Device</title>
+<para id="element-171">While using a camera would allow us to introduce novel additions like mobile capture and perspective correction, replacing it with a flatbed scanner would eliminate many of the cumbersome lighting issues.  In fact, a scanner would provide a large acquisition area and the assurance that all coins are imaged without distortion. Moreover, at the same image quality as the camera, the scanner images the coins at a much smaller distance, resulting in greater detail on the coin face. It would, however, be interesting to see if we could be a piece of software that is robust enough to handle non-ideal conditions, rather than limiting its abilities to compensate for them. A system that could identify overlapping coins, for example, would be more useful.
+</para>
+</section>
+<section id="Resolution">
+<title>Resolution Improvements</title>
+<para id="element-959">The quality at which we capture our data is integral to proper identification of the coins. However, we had to sacrifice image quality for speed. Our testbed was a 3.0GHz Pentium 4 laptop. Moving the software over to a high performance server would yield considerable improvements in processing time. This would allow us to increase the resolution of our images and not worry about prohibitive increases in processing time.  Increases in resolution could have a significant impact on the performance of the coin recognition system.  This is an area of improvement that should be given serious attention.</para>
+</section>
+<section id="Unwrapping">
+<title>The Unwrapping Algorithm</title>
+<para id="element-112">The next element of the process that we can look at is the unwrapping algorithm. Having studied the output of it on high quality images, it seems that it introduces artifacts that negatively impact the future coin comparisons. Also, we're throwing away information about the outer parts of the coin in order to maintain a square matrix. We could counteract this by using a different line drawing algorithm that always uses the exact number of pixels in the radius, not actually taking the values of the pixels but interpolating what the proper values should be.</para>
+</section>
+<section id="Compare">
+<title>Refining the Comparisons</title>
+<para id="element-385">Next, we turn our attention towards the way in which the coins are compared. We implemented radius matching to cut down on computation time and possible mismatches with other coins in the database, but we could go a step further in refining our results. A good addition to the software would be the ability to deal with full color images as opposed to gray scale ones. This would provide an obvious way of filtering out mismatches and would be done by attributing an average RGB value to each coin. Pennies would only be compared against copper colored coins and quarters would only be compared against other silver coins. Another add-on that we considered was implementing edge detection. This failed miserably with our low resolution images, as the output was too blocky to resemble anything meaningful. However, with higher quality images, there would be enough pixels for an edge detected image to contain the important details of the coin.</para>
+</section>
+<section id="Database">
+<title>Improving the Database</title>
+<para id="element-519">Lastly, we could increase accuracy by giving the program a bigger database to compare coins against. Basically, this entails adding coins of all conditions to account for the wide variety of coins that people carry. Clearly, this improvement is lacking in finesse, but this is how many recognition programs address the problem of comparing vastly different data.</para>
+</section>
+<section id="conclusions">
+<title>Conclusions</title>
+<para id="element-283">These changes range from simple tweaks to more involved rewrites of our code, but all should help bring the system closer to the ideal case of our composite images.</para>
+</section>   
+  </content>
+  
+</document>

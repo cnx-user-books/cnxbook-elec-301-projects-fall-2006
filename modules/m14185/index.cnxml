@@ -1,0 +1,77 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Astronomical Image Deconvolution: Image Processing with Weiner Filter</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>67c57699-d770-4bd7-9c85-5d1aae46cbea</md:uuid>
+</metadata>
+  <content>
+    <para id="delete_me">Our first step was to process the images using the basic procedures used by 
+astronomers in the taking of data. Each set of data images is accompanied by a set of 
+“darks” and “flats” taken at the same time as the rest of teh data. A dark is a picture taken with the telescope closed (i.e. with the lens cap on) for the same length of time as the actual data images are exposed; it produces an “image” of current fluctuations in the CCD due to thermal variation. A flat is an image taken of a white, uniformly lit background, and shows any discrepencies in the CCD produced image, such as dead pixels or positional variations.
+</para><figure id="element-87"><title>Raw Data</title>
+  <media id="idm6814336" alt=""><image src="http://cnx.org/GroupWorkspaces/wg614/m14185/rawdata.jpg" mime-type="image/jpeg"/></media>
+  <caption>A raw data image, showing errors from the telescope CCD as the lighter left side border.</caption></figure><figure id="element-587"><title>Calibrated Data</title>
+  <media id="idp700880" alt=""><image src="http://cnx.org/GroupWorkspaces/wg614/m14185/calibrateddata.jpg" mime-type="image/jpeg"/></media>
+  <caption>A calibrated data image. Note the removal of the white from the left border.</caption></figure><para id="element-609">After we removed the darks and flats from our data images, we were ready to begin processing our calibrated images. For each image, we used the image model we had already made, with a few basic assumptions. First, we assumed an approximately 
+Gaussian distribution for both the noise and the point spread function (PSF) h, which modeled the blurring of the image due to intervening effects, most notably atmospheric disturbance. Secondly, we assumed that the original images of the stars could be modeled as delta functions (point sources) before distortion. Next, we had to build our Weiner Filter G, such that:</para><equation id="element-623"><title>Deconvolution with Weiner filter G</title>
+  <m:math>
+    <m:apply>
+    <m:eq/>
+      <m:apply>
+	<m:times/>
+	<m:cn>Ĝ</m:cn>
+	<m:cn>Ŷj</m:cn>
+      </m:apply>
+      <m:cn>Â</m:cn>
+   </m:apply>
+  </m:math></equation><para id="element-464">where Â is the Fourier transform of our estimate of the original object, Ĝ is our Weiner filter, and Ŷj  is again the Fourier transform of our data image. The Weiner filter is:</para><equation id="element-75"><title>Addition in a MathML module</title>
+  <m:math>
+    <m:apply>
+    <m:eq/>
+      
+      <m:apply>
+	<m:divide/>
+
+        <m:apply>
+	<m:times/>
+	<m:cn>Ĥ</m:cn>
+	<m:cn>Sss</m:cn>
+        </m:apply>
+
+        <m:apply>
+	<m:times/>
+	
+        <m:apply>
+	<m:plus/>
+        
+        <m:apply>
+	<m:power/>
+	<m:cn>|Ĥ|</m:cn>
+	<m:cn>2</m:cn>
+        </m:apply>
+
+	<m:cn>Sss</m:cn>
+        </m:apply>
+      <m:cn>Snn</m:cn>
+      </m:apply> 
+      </m:apply>
+
+<m:cn>Ĝ</m:cn>
+   </m:apply>
+  </m:math></equation><para id="element-513">with Sss being the power spectrum of the data image, Snn the power spectrum of the noise, and Ĥ the Fourier transform of a Gaussian distribution in two dimensions. However, since our stars are assumed to be point functions, Sss can be assumed as constant; also, we assumed a Gaussian distribution of our noise, so its power spectrum can be modeled by its variance σn2. The Gaussian distribution in two dimensions is given by:</para><equation id="element-754"><title>Addition in a MathML module</title>
+  <m:math>
+    <m:apply>
+    <m:eq/>
+      <m:apply>
+	<m:times/>
+	<m:cn>(1/(2*π*σ^2))</m:cn>
+	<m:cn>exp(-(u^2 + v^2)/(2σ^2))</m:cn>
+      </m:apply>
+      <m:cn>h</m:cn>
+   </m:apply>
+  </m:math></equation><figure id="element-929"><title>Gaussian Distribution</title>
+  <media id="idp49808" alt=""><image src="http://cnx.org/GroupWorkspaces/wg614/m14185/multiplecornerh.jpg" mime-type="image/jpeg"/></media>
+  <caption>Gaussian distribution used for our filter.</caption></figure><para id="element-920">where u and v give the position in two dimensions. As seen on the right, our data images take the upper left corner as the origin, so we had to place the center of our Gaussian function there as well as periodize it so we are actually filtering with the entire function across our image. Taking the Fourier transform and substituting in, we got our final Weiner filter. From there, it was a simple matter of multiplying by our data image’s Fourier transform and taking the inverse, two dimensional FFT to find āi, our estimation of the original object from just that one data image. As shown below, the Weiner filter does a good job at sharpening the stars in the image (look in particular at stars in the upper left of the cluster) while not amplifying the noise level. In fact, our measured noise variance remained unchanged through this process.</para><figure id="element-773"><title>Processed Image</title>
+  <media id="idp341296" alt=""><image src="http://cnx.org/GroupWorkspaces/wg614/m14185/Try3pic1bestsigma0pt07.jpg" mime-type="image/jpeg"/></media>
+  <caption>A figure after the deconvolution process.</caption></figure><para id="element-988">Repeating this process for each data image, we created several different estimations of the original object.  So, the next major step was to combine these results to get our final best estimate of the object.  We began this process by registering the different estimations āi; to do this, we chose three stars on each image as guides.  Then, we utilized the image transformation tools available in Matlab to linearly transform (translate/rotate) all three images so that our three guide stars matched up as closely as possible. This step ensured that the images matched up on top of each other for the final step in the process. As the last step in our image processing, we combined the data images using a simple weighted average.  Each estimation image of our original object was weighted by the inverse of its original noise σn2.  The final product of this weighted average produced our best estimate of the actual Messier object 3.</para>   
+  </content>
+  
+</document>

@@ -1,0 +1,31 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Speaker Identification MATLAB files</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>00120b46-7de8-4647-97ba-7fe637a0dc54</md:uuid>
+</metadata>
+<content>
+<section id="id5770805">
+<title>MATLAB Files</title>
+<para id="id5579198"><link resource="main.m">main.m</link> – The wrapper function, calls the
+remaining MATLAB functions after taking in the user’s voice and
+outputs the identity of the speaker.</para>
+<para id="id3984684"><link resource="vocalModel.m">vocalModel.m</link> – Creates a model of the vocal
+system.</para>
+<para id="id4729461"><link resource="databaseCreationScript.m">databaseCreationScript.m</link> – Stores the vowel
+sounds of the entire group.</para>
+<para id="id4729465"><link resource="graphFormant.m">graphFormant.m</link> – Plots the frequency response
+of the formants on a logarithmic scale.</para>
+<para id="id3823069"><link resource="fastconv.m">fastconv.m</link> – Calculates the linear convolution
+of two input signals.</para>
+<para id="id5289698"><link resource="zerovect.m">zerovect.m</link> – Removes DC offset and microphone
+turn on effect.</para>
+<para id="id2892618"><link resource="formantaverages.m">formantaverages.m</link> – Stores vowel models and
+formant ranges in the database.</para>
+<para id="id4300584"><link resource="getFormantData.m">getFormantData.m</link> – Gets formant frequencies
+and model for one speaker and one vowel.</para>
+<para id="id4773124"><link resource="newenvdetect.m">newenvdetect.m</link> – Detects the start and end
+points of the envelope.</para>
+<para id="id4773129"><link resource="formantfind.m">formantfind.m</link> – Finds the formant frequencies
+and magnitudes for one vocal model.</para>
+</section>
+</content>
+</document>

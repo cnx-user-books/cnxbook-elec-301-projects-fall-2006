@@ -1,0 +1,43 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Conclusions and Oppurtunities for Further Work</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>f160e3b3-e122-480c-82e9-718395cf1d0f</md:uuid>
+</metadata>
+<content>
+<section id="id6394322">
+<title>Conclusions and Opportunities for Further Work</title>
+<section id="id6448734">
+<title>Conclusion:</title>
+<para id="id6503367">Our Wiener deconvolution process demonstrates
+that echo removal is indeed possible. Unfortunately the procedure
+generates a relatively noisy output signal and would only be useful
+in the presence of extreme environmental distortion (e.g. room
+echoes cause the signal to be unintelligible). With a few
+modifications however, deconvolution could remove echoes reliably
+as well as preserve the quality of our signal</para>
+</section>
+<section id="id4061039">
+<title>Improvements:</title>
+<para id="id6644857">Wiener deconvolution relies on previous
+statistical knowledge of both the additive noise and the original
+signal being restored. The statistical characteristics of the room
+could not be approximated; so normal deconvolution was used,
+resulting in a significant increase in noise. Possible alternatives
+to using deconvolution to find the room’s respone and address this
+issue are:</para>
+<list list-type="bulleted" id="id3930910">
+<item>Measure impulse response by recording the result of an
+impulse generator (e.g. starter’s pistol) in the room.</item>
+<item>Measure frequency response by “sweeping through” generated
+sine waves of different frequencies.</item>
+</list>
+<para id="id6648261">Also, advanced noise filtering techniques
+would improve signal quality at every step in the process. Since
+deconvolution tends to amplify noise, filtering would profoundly
+improve the quality of output signals in this multi-step procedure.
+For example, filtering to remove noise of the test recording before
+deconvolving it with the room response could help reduce the noise
+in the final recovered signal.</para>
+</section>
+</section>
+</content>
+</document>

@@ -1,0 +1,35 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>The Team and Thanks</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>71ff0209-7a16-4afd-a40a-8fcf59dab3a2</md:uuid>
+</metadata>
+<content>
+<section id="id11621380">
+<title>The Team</title>
+<para id="id13226066">Our group
+is:</para>
+<list list-type="bulleted" id="id13224630"><item>Damen Hattori: A junior ELEC from Will Rice, Damen enjoys
+physics, adores linear algebra, and is currently working on proving calculus. He also wrote
+the code for the formant analysis and autoregressive model.</item>
+<item>Josh Long: A junior ELEC from Sid, Josh enjoys arts and
+crafts, long walks on the beach, and watching train wrecks. Josh
+helped create the beautiful poster for the presentation, in
+addition to doing background research.</item>
+<item>Matt McDonell: A junior ELEC from Jones College, Matt wrote
+the MATLAB language. All of "it". "It", of course, is the envelope
+detector used in this project. But he did that just for fun.</item>
+<item>Chris Pasich: A junior ELEC from Lovett, Chris helped start
+up connexions along with Richard Baraniuk (Chris 0%, RichB 100%). He also helped the Short
+Bus get back on track by writing their connexions modules and
+documenting the results from the actual testing.</item>
+</list>
+</section>
+<section id="id13270465">
+<title>Thanks and Recognition</title>
+<para id="id12530570">The team would also like to thank
+Professor Richard Barniuk and Mark Davenport, who helped teach us
+the material that got us started on out project. We also would like
+to thank a few groups from previous years, who we looked at for
+ideas: the Introduction to Methods for Voice Conversion ELEC 301 group project for a backgroup on speech signals, and the Formant Analysis and Vowel Detection ELEC 431 group project for a background on formants.</para><para id="element-613">In addition, we also found help online from two other key sources: <link url="http://www.ele.auckland.ac.nz/~p4p_2004/archive/reports2003/pdfs/p60_hlai015.pdf">The Speech Processing Workstation</link>, which helped in pretty much everything, especially envelopes, and <link url="http://hyperphysics.phy-astr.gsu.edu/hbase/music/vowel.html">HyperPhysics Vowel Sounds site</link>, a huge resource when examining formants.</para><para id="element-173">Finally, we want to thank MATLAB - without it, the time in lab would have been in vain.</para>
+</section>
+</content>
+</document>

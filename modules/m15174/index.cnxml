@@ -1,0 +1,70 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Introduction of LPC approach</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>8cb74a11-6034-4c41-bfba-269f6ffd47ad</md:uuid>
+</metadata>
+<content>
+<section id="id15060532">
+<title>LPC Approach</title>
+<para id="id13077167">The LPC approach we used was based on the
+Linear Predictive Coefficients, which is a function in MATLAB.
+After researching predictive models, we determined that the LPC,
+which is normally applicable to speech, could be used for sound
+prediction as well. It works on the premise that given a vector,
+the LPC function will determine the coefficients of an Nth order
+forward linear predictor.</para>
+<para id="id15347004">A = LPC(X,N)</para>
+<para id="id15181500">A = [1 A (2) A (3) ... A (N+1) ]</para>
+</section>
+<section id="id11041292">
+<title>Determining the Genre via Errors</title>
+<para id="id6347384">We used the dot product to find the error
+between the predicted nth term and the actual nth term of the input
+music. For our purposes, we chose to use the 25th order after
+determining that it yielded the highest accuracy
+experimentally.</para>
+<para id="id15111201">Error = A * X</para>
+<para id="id14511836">= X (n) – A (2)*X (n-1) – A (3)*X (n-2) – ...
+– A (N+1)*X (n-N)</para>
+<para id="id5435152">The predictor was used to determine the error
+between the input song and the genre (our genre database). The idea
+is that the genre that gives the least error would be the genre of
+the input song.</para>
+<para id="id15136099">RockLPCTotal ErrorClassicalLPCTotal
+ErrorRapLPCTotal ErrorInput Song? Genre ?</para>
+<para id="id15375866">This figure represents the testing of the
+song with each genre database. Testing consisted of the following
+procedure:</para>
+<para id="id15416730">We first loaded the input song. Then applied
+it to the database for each genre (one at a time) to determine
+which genre it is most similar to. For the first genre, find the
+LPC coefficients for it. Then section the input song vector into
+two sections of length 25 each, as shown in figure 2. Apply each
+section to the LPC coefficients to find the error for each section.
+Then sum up the errors in each section to find the total error for
+that genre. Finally, do it for all the genres. By the end of this
+procedure, we would have the total errors for each genre. And the
+minimum error should be the genre that the input song belonged
+to.</para>
+<para id="id15365247">Sections of song vector (fig. 2)</para>
+</section>
+<section id="id15483023">
+<title>Problems</title>
+<para id="id15483030">We found several specific errors in using the
+LPC method. First and foremost, it took too much time to calculate
+the errors (about 53 seconds per input song). Thus, we could not be
+able to put enough sampled songs into our database, which lead to
+get more accurate results. However, if we used another method of
+forming our database, specifically by using a matrix, the
+computations would have been much faster, and we could have used
+more songs in our database. The problem was that in our program, we
+recalculated the LPC coefficients each time we ran checked an input
+song. Had we saved the LPC coefficient values in a matrix, the
+computations would have been much faster.</para>
+<para id="id15400792">The LPC could not accurately detect neither
+jazz nor pop under the algorithm we had developed. In fact, the LPC
+was most accurate when deciding between two random types of songs,
+but not five. It was particularly accurate with rap and
+classical.</para>
+</section>
+</content>
+</document>

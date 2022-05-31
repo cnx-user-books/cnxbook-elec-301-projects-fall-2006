@@ -1,0 +1,45 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Abstract and goal of the genre detection method</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>8a9babef-9305-4122-976f-21bb3f58c8ce</md:uuid>
+</metadata>
+<content>
+<para id="id9384837">Abstract and goal of our genre detection
+method</para>
+<section id="id9192562">
+<title>Abstract of our genre detection method</title>
+<para id="id6001965">Categorizing music isimportant to all music
+fans nowadays. However, few programs currently existing on the
+market can automatically, efficiently, and accurately detect the
+genre of a random chosen song. For example, before customers can
+search for a list of songs within a certain genre on iTunes, the
+built-in genre detector for the widely-used ipod series, they have
+to manually input each song’s genre in order to make it happen.
+Thus by increasing the accuracy and shortening the detection time,
+we can come up with a really useful and cool project that will
+ensure higher quality and customer satisfaction.</para>
+</section>
+<section id="id12246192">
+<title>Goals</title>
+<para id="id10807174">The goal of our genre detection project is to
+develop a algorithm that detects the genre of any song. The
+specific genres (our testing pool for now) that we are seeking to
+detect are rap, classical, rock, jazz, and pop.</para>
+</section>
+<section id="id7158034">
+<title>Methods of Detection</title>
+<para id="id12277605">In our project, we have developed two
+different techniques to complete the detection process. For both,
+we created a database “comparison” matrix composed of certain
+information of the previously mentioned genres. Then in the same
+way we composed another matrix containing information of the input
+song and compared it with the database to find the most similar
+genre. The first technique was with the fast Fourier transform and
+matrix multiplication. We used matrix multiplication and the dot
+product to find the similarities between our input song and each
+genre. The second technique involved finding linear predictive
+coefficients (LPC), which finds the predicted nth value. The LPC
+detects genre was based on error while the FFT matrix method
+achieved the same goal by finding the similarity.</para>
+</section>
+</content>
+</document>

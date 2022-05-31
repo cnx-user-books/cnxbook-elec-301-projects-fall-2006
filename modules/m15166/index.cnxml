@@ -1,0 +1,47 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Evaluating the Results of Echo Removal</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>84052e4d-56de-4c21-9dfd-561e375daba4</md:uuid>
+</metadata>
+<content>
+<section id="id7205960">
+<title>Evaluating the Results of Echo Removal</title>
+<para id="id6991847">The original signal played in the test room is
+shown below:</para>
+
+<figure id="id6995354">
+<media id="idm4448704" alt=""><image src="../../media/Graphic1-0393.jpg" mime-type="image/jpeg"/></media>
+</figure>
+<para id="id6757146"><media id="idm11054800" alt=""><audio src="original.wav" mime-type="audio/x-wav"/></media></para>
+<para id="id7195318">When this signal is played in the staircase of
+Sid Rich College the following signal was recorded back:</para>
+<figure id="id7190255">
+<media id="idm2292800" alt=""><image src="../../media/Graphic2-adfe.jpg" mime-type="image/jpeg"/></media>
+</figure>
+<para id="id7230819"><media id="idm2088640" alt=""><audio src="original_record_stairs.wav" mime-type="audio/x-wav"/></media></para>
+<para id="id7311781">Using normal deconvolution of this signal with
+the room’s response the following singal is recovered:</para>
+<figure id="id7110604">
+<media id="idp213008" alt=""><image src="../../media/Graphic3-4295.jpg" mime-type="image/jpeg"/></media>
+</figure>
+<para id="id7012812"><media id="idp179696" alt=""><audio src="stair_recovered_normal.wav" mime-type="audio/x-wav"/></media></para>
+<para id="id7012483">In contrast, when the recorded signal is
+Wiener deconvolved with the room’s response the following signal is
+recovered:</para>
+<figure id="id7005040">
+<media id="idm1702496" alt=""><image src="../../media/Graphic4.jpg" mime-type="image/jpeg"/></media>
+</figure>
+<para id="id7026876"><media id="idm5167296" alt=""><audio src="stair_recovered_wiener.wav" mime-type="audio/x-wav"/></media></para>
+<para id="id7177368"/>
+<para id="id7261714">By comparing the audio files of the original
+signal, the recording of the signal in the staircase, and the two
+deconvolved signals it’s clear that both methods remove the echo at
+the price of amplifying the background white noise in the signal.
+It’s also clear by both listening to the audio and comparing
+Figures 3 and 4 that Wiener deconvolution removes the echo with
+significantly less noise amplification. Comparing the two
+deconvolution results with the original test signal by means square
+error showed that Wiener deconvolution had about a 25% of the error
+of normal deconvolution.</para>
+</section>
+</content>
+</document>

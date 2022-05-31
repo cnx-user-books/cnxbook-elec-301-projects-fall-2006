@@ -1,0 +1,69 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Exploring High Dynamic Range Imaging: §3.7 Stochastic Gain Control</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>12775976-c912-445f-8edf-d46dfb70e791</md:uuid>
+</metadata>
+<content>
+<para id="id9246442">In computer graphics, ray tracing is a technique
+used to project three dimensional space onto a two dimensional
+plane as seen from an eye point. The basic ray tracing algorithm is
+to fire a ray from the eye point through every pixel in the
+display. If the ray intersects something in the scene, keep the
+closest intersection point and calculate the intensity at that
+point. The following novel algorithm which we designed, the Stochastic Gain Control operator, was
+inspired by distributed ray tracing. 
+<footnote id="idp112304">Ron Goldman, “Lecture 17: Recursive Ray
+Tracing” (Houston: Rice University, 25 Oct 2006) 1.</footnote>One problem though is that,
+since each pixel really represents a fixed area of the scene
+instead of a fixed point, one sample for the whole pixel may not
+capture all of the information in that area. This leads to jagged
+edges often called aliasing.
+<footnote id="idp7012784">Arnold Martin, “Distributed Ray Tracing”
+(Worcester: Worcester Polytechnic Institute, 1999)
+&lt;http://www.owlnet.rice.edu/~comp360/lectures/RayTracing.pdf&gt;.</footnote>Therefore,
+anti-aliasing techniques are used to soften the edges in a ray
+tracer.</para>
+<para id="id8187293">One such technique is called supersampling. By
+firing multiple, evenly spaced rays over the pixel area, the
+intensities calculated for each ray are averaged to find the
+overall intensity in the pixel.
+<footnote id="idp9940832">Donald Hearn and M. Pauline Baker, Computer
+Graphics (2nd ed. Englewood Cliffs: Prentice Hall, 1994)
+538-9.</footnote>This is similar to the Pattanaik-Yee Adaptive Gain
+Control operator. Unfortunately, by uniformly sampling each pixel,
+the image may appear blurry in some parts or have rigid variations
+in other parts. This can be solved by using distributed ray
+tracing.</para>
+<para id="id5578360">In distributed ray tracing, rays are randomly
+fired over a finite pixel area and then averaged together. Surface
+lighting is usually defined as multiple integrals, so using a Monte
+Carlo method to sample the integrand at randomly chosen points
+results in a better approximation. While the aliasing is removed,
+it will lead to a small amount of noise in the picture, but overall
+the picture quality will be improved.
+<footnote id="idm121024">Hearn 541.</footnote></para>
+<para id="id9334821">Using this idea, modifications can be made to
+the averaging local operator. As the window sweeps across the
+image, randomly selected pixels are averaged together. Since the
+pixels are randomly selected, the same pixel may be selected more
+than once. Thus, some pixels are weighted more than others. This
+acts as a weighted pixel mask or pseudo Gaussian filter.</para>
+<figure id="id9336064">
+<media id="idp9171328" alt=""><image src="../../media/Graphic1-5284.png" mime-type="image/png"/></media>
+</figure>
+<para id="id9409307">If only one pixel is randomly selected inside
+the window, the resulting image will be very blurry. This makes
+sense because while sliding the window the same pixel may have
+sampled repeatedly and at the same time failed to sample others. As
+the number of pixels selected increases, the image becomes sharper
+and sharper compared to the image produced by the Pattanaik-Yee
+Adaptive Gain Control operator. However, if more than 125% of the
+pixels in the window are selected, there will be no noticeable
+change.</para>
+<figure id="id3487234"><media id="idp9935632" alt=""><image src="../../media/memorialStochastic1.PNG" mime-type="image/png"/></media>
+	<caption>1 pixel sampled from a 3-by3 pixel window</caption></figure>
+<figure id="id9872342"><media id="idp925568" alt=""><image src="../../media/memorialStochastic5.PNG" mime-type="image/png"/></media>
+	<caption>5 pixels sampled from a 3-by3 pixel window</caption></figure>
+<figure id="id1298462"><media id="idp6829536" alt=""><image src="../../media/memorialStochastic10.PNG" mime-type="image/png"/></media>
+	<caption>10 pixels sampled from a 3-by3 pixel window</caption></figure>
+</content>
+</document>

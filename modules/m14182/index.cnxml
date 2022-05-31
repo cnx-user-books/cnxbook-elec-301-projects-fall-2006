@@ -1,0 +1,50 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml"><title>Exploring High Dynamic Range Imaging: §3.3 Global Operator</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>a63827c4-d669-4980-91bf-cc5c45c7c59d</md:uuid>
+</metadata>
+<content>
+
+<para id="id7033968">The term “global” in this case refers to
+operators that use one average luminance for the entire image. This
+algorithm was taken from Erik Reinhard’s Photographic Tone
+Reproduction for Digital Images. In his paper, the average
+luminance Lw is taken as</para>
+
+<figure id="id7025561"><media id="idm200240" alt=""><image src="../../media/equation1.PNG" mime-type="image/png"/></media>
+	</figure>
+
+<para id="id6383712">where Lw(x,y) is the luminance in the scene, N
+is the number of pixels, and D is some small value to prevent you
+from taking the log of zero. The luminance at each pixel is then
+scaled by the key value a and the average luminance Lw.
+<footnote id="idp678496">Erik Reinhard, Photographic Reproduction for
+Digital Images (University of Utah, 2002)
+&lt;http://www.cs.utah.edu/~reinhard/cdrom&gt; 3.</footnote></para>
+
+<figure id="id6917094"><media id="idp269456" alt=""><image src="../../media/equation2.PNG" mime-type="image/png"/></media>
+	</figure>
+
+<para id="id5032826">The key value of a scene is a value between
+zero and one that indicates whether it is very light, very dark, or
+around middle grey. For example, the key value of a scene of a
+white painted room is very close to one. However, most scenes have
+a wide range of brightness, so the key value is usually set to
+middle grey, or 0.18.
+<footnote id="idp606384">Reinhard 2.</footnote></para>
+<para id="id7144521">Finally, the luminances are scaled down to a
+displayable range between 0 and 1.</para>
+
+<figure id="id6937326"><media id="idm297936" alt=""><image src="../../media/equation3.PNG" mime-type="image/png"/></media>
+	</figure>
+
+<para id="id7065914">where Lwhite is mapped to the maximum
+luminance in the scene. For low dynamic ranges, this will also
+enhance the contrast in the image. For the majority of high dynamic
+ranges, the algorithm preserves the contrast for low luminance
+areas while mapping high luminances to a displayable range.
+However, detail is lost in scenes that have very high dynamic
+ranges.
+<footnote id="idp693008">Reinhard 3.</footnote></para>
+<figure id="id9834533"><media id="idp847152" alt=""><image src="../../media/memorialGlobal.PNG" mime-type="image/png"/></media>
+	<caption>Global Operator</caption></figure>
+</content>
+</document>

@@ -1,0 +1,107 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Explanation of Wiener Deconvolution</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>eed4dcd4-1b95-4a66-9fae-e16add05cc13</md:uuid>
+</metadata>
+<content>
+<section id="id3994055">
+<title>Weiner Deconvolution</title>
+<section id="id6267243">
+<title>How to Use the Connexions Document Template</title>
+<para id="id6488235">Our system can be described in block diagram
+form as:</para>
+<figure id="id6573548">
+<media id="idp8786352" alt=""><image src="../../media/Graphic1-86cf.jpg" mime-type="image/jpeg"/></media>
+</figure>
+<para id="id4088817">Where:</para>
+<list id="element-710" list-type="bulleted"><item>f[n] = our original signal</item>
+	<item>h[n] = the room response</item>
+	<item>y[n] = measured recording in the room</item></list>
+
+
+<para id="id6180866">Assuming the room is an LTI system, y[n] is
+related to f[n] and h[n] by discrete time convolution:</para>
+
+<para id="element-226">f[n]*h[n]=y[n]
+</para><para id="id5272901">Convolution is commutative so the following
+also holds:</para>
+<para id="id4926248">h[n] * f[n] = y[n]</para>
+<para id="id5611933">Taking the Discrete Time Fourier Transform of
+f[n], h[n], and y[n] shows that in the frequency domain, the
+convolution of f[n] and h[n] is equivalent to multiplication of
+their Fourier counterparts:</para>
+<para id="id5590031">F(jw) H(jw) = Y(jw)</para>
+<para id="id5636539">Given a known original signal and a known
+measured recording, the room’s frequency response can be determined
+by division in the frequency domain:</para>
+<para id="id6064210">H(jw) = Y(jw) /F(jw)</para>
+<para id="id5968817">Similarly, given a known room response and known measured recording, the original signal can be determined by division in the frequency domain.</para>
+
+
+<para id="id4822888">F(jw) = Y(jw) /H(jw)</para>
+<para id="id5612046">The inverse DTFT can then be used to determine
+the impulse response h[n] or the recovered signal f[n].</para>
+</section>
+</section>
+<section id="id3209869">
+
+<section id="id5000046">
+<title>Room Noise</title>
+<para id="id5344917">The room also contains additive noise (which
+can be recorded). A more accurate block diagram drawing of our
+system is:</para>
+<figure id="id6110823">
+<media id="idp12770496" alt=""><image src="../../media/Graphic2-9420.jpg" mime-type="image/jpeg"/></media>
+</figure>
+<para id="id6116134">The measured recording, y[n] can be related to
+the original signal, room response, and noise in frequency
+as:</para>
+<para id="element-502">F(jw) H(jw) + N(jw)= Y(jw)</para>
+
+<para id="id4792930">In order to compute the room’s frequency
+response or the DTFT of the recovered signal, division in the
+frequency domain is again performed:</para>
+<para id="id3217174">H(jw) = (Y(jw) / F(jw)) – (N(jw)/ F(jw))</para>
+<para id="id6594104">F(jw) = (Y(jw) / H(jw)) – (N(jw)/
+H(jw))</para>
+<para id="id4054291">Many of the fourier coefficients of the room
+response are small (especially at high frequencies), so
+deconvolution has the undesirable effect of greatly amplifying the
+noise.</para>
+</section>
+<section id="id3105482">
+<title>Noise Reduction</title>
+<para id="id5828718">An improvement upon normal deconvolution is to
+apply a 
+<emphasis>Wiener filter</emphasis>before deconvolution to reduce
+the additive noise. The Wiener filter utilizes knowledge of the
+characteristics of the additive noise and the signal being
+recovered to reduce the impact of noise on deconvolution. This
+process is known as 
+<emphasis>Wiener deconvolution</emphasis>. The Wiener filter’s
+mathematical effect on the room’s frequency response can be seen
+below:</para>
+
+<para id="element-908"><media id="idp7882352" alt=""><image src="../../media/Graphic4-88b6.png" mime-type="image/png"/></media></para><para id="id4017694">Where “x” is the frequency variable, H(x) is
+the room’s frequency response, G(x) is the wiener-filtered version
+of the inverse of the room response and, S(x) is the expected
+signal strength of the original signal f[n], and N(x) is the
+expected signal strength of the additive noise.</para>
+<para id="id3979218">F(x) =G(x) Y(x)</para>
+<para id="id4073116">Where F(x) is the DTFT of the recovered signal
+and Y(x) is the DTFT of the measured recording.</para>
+<para id="id5076025">The following example from image processing
+shows effectiveness of Wiener deconvolution at reversing a blurring
+filter while accounting for noise.</para>
+<figure id="element-881"><media id="idp545024" alt=""><image src="../../media/Graphic3-2a55.jpg" mime-type="image/jpeg"/></media></figure>
+
+<para id="id3185063">Because of the added S(x) and N(x) terms,
+Wiener deconvolution cannot be used without knowledge of the
+original signal and noise. Voice characteristics are fairly
+predictable, whereas the characteristics of the room are difficult
+to estimate. Therefore, Wiener deconvolution can only be used when
+recovering the audio signal (not to determine the room
+response).</para><para id="element-797">More information on Wiener Deconvolution can be found <link url="http://en.wikipedia.org/wiki/Wiener_deconvolution">here</link>.</para>
+</section>
+</section>
+</content>
+</document>

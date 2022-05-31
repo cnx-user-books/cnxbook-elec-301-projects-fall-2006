@@ -1,0 +1,27 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Exploring High Dynamic Range Imaging: §5.1 Conclusion</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>a7427b20-4dfb-4bd3-93a8-1738ea7c4626</md:uuid>
+</metadata>
+<content>
+<para id="id7503205">Although the algorithms introduced in this
+report for tone mapping are not among the best, they do fulfill
+their goal of preserving highlight and shadow information and the
+values in-between by using information from multiple images taken
+at different exposures and combining them into a lower color depth
+file. To review, we implemented a couple of simple existing
+algorithms in MATLAB to see how they worked. We added modifications
+to these algorithms as necessary, before finally attempting our own
+unique algorithms. We used what we had learned from previous
+courses in DSP and computer graphics to create these
+algorithms.</para>
+<para id="id7321090">A natural step in advancing the algorithms
+presented in this report would be the creation of a tone mapping
+technique which produces images that not only hold the most amount
+of detail possible, but are also visually appealing to the eye.
+Although beauty is a subjective entity, producing images with high
+local contrast combined with good color reproduction and saturation
+is a good place to start. One way to do this might be to identify
+areas where large luminance changes occur and to weight the image according to these areas
+before mapping it.</para>
+</content>
+</document>

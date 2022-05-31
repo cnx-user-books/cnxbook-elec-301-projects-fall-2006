@@ -1,0 +1,92 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Key Problems in Speaker Identification</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>0e2f175e-0b9f-42c7-8791-7fa61c1737c1</md:uuid>
+</metadata>
+<content>
+<section id="id8608668">
+<title>The Questions</title>
+<para id="id10114505">The issues with speech recognition in general
+are complex and wide-ranging. One of the main problems lies in the
+complexity of the actual speech signal itself. In such signals, as in signal 1 below, it is very difficult to interpret the large amounts of information presented to a system.</para>
+<figure id="id10089641"><media id="idm7166864" alt=""><image src="../../media/Graphic1-9d4e.png" mime-type="image/png" height="400" width="600"/></media>
+<caption>The word diablo, with DC offset removed.</caption></figure>
+<para id="id5451663">One of the more evident problems is the
+jaggedness of the signal. A natural speech signal is not smooth;
+instead, it fluctuates almost nonstop throughout the signal.
+Another naturally occurring property of speech patterns is the
+fluctuation in the volume, or amplitude, of the signal. Different
+people emphasize different syllables, letters, or words in
+different ways. If two signals have different volume levels, they
+are very difficult to compare. Speech signals also have a very
+large number of peaks in a short period of time. These peaks
+correspond to the syllables in the words being spoken. Comparing
+two signals becomes much more difficult as the number of peaks
+increases, as it is easy for results to be skewed by a higher peak,
+and, consequently, for those results to be interpreted incorrectly.
+The speed at which the input single is given is also an important
+issue. A user saying their name at a speed different from the speed
+at which they normally speak can change results, as two versions of
+the same pattern are compared. The problem is, the time over which
+they are spoken is different, and must be accounted for. Finally,
+when examining the signal in terms of speech verification, another
+individual may attempt to mimic the speech of another person. If
+the speaker has a good imitation, it would be possible for the
+speaker to be accepted by the system.</para>
+</section>
+<section id="id8968931">
+<title>The Answers</title>
+<para id="id9894180">How do you deal with the jaggedness of the
+signal and the noise introduced to the signal through the
+environment?</para>
+<list list-type="bulleted" id="id7698164">
+<item>In order to actually account for this, you have to pass all
+the signals through a smoothing filter. The filter will accomplish
+two tasks: first, it gets rid of any excess noise. Second, it gets
+rid of the high frequency jaggedness in the signal and leaves
+behind simply the magnitude of the signal. As a result, you get a
+clean signal that is fairly easy to process.</item>
+</list>
+<para id="id8117472">How do you account for the different volumes
+of speakers?</para>
+<list list-type="bulleted" id="id10079228">
+<item>The signals must all be normalized to the same volume before
+they are examined. Each signal is normalized about zero such that
+all of the signals will have the same relative maximum and minimum
+values, and so that comparing two signals with different volumes is
+the same as comparing the same two signals if they were to have the
+same volume.</item>
+</list>
+<para id="id9088960">How do you examine each of the individual
+peaks?</para>
+<list list-type="bulleted" id="id8752721">
+<item>Just after the signal is smoothed by the filter, we use an
+envelope function to detect all of the peaks of the signal. By
+doing this, we can be sure that, if a signal passes a certain
+threshold amount, it will be examined and compared with the
+corresponding signal in the database. The analysis will not be an
+analysis of the entire signal, but rather a formant analysis. The
+individual formant, or vowel sounds, in the signal will be examined
+and those will be used to verify the speaker.</item>
+</list>
+<para id="id10045716">How does the system handle varying speeds of
+inputs?</para>
+<list list-type="bulleted" id="id5877235">
+<item>Both the formant analysis and the envelope functions will be
+used to help with varying input speeds. The envelope of the peak
+will determine which vowels are available, and the actual formants
+themselves will be relatively unchanged. It is difficult to handle
+very high speed voices, but most other voices can be handled
+effectively.</item>
+</list>
+<para id="id10076770">How can you account for imitating speech
+patterns?</para>
+<list list-type="bulleted" id="id10058006">
+<item>Once again, the formants of the individual signals are
+analyzed to actually determine if a speaker is who he claims to be.
+In most cases, the imitating formants do not match up closely with
+those stored in the database, and the imitator will be denied by
+the system.</item>
+</list>
+</section>
+</content>
+</document>

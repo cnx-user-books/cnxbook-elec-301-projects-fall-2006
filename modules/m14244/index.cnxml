@@ -1,0 +1,186 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Exploring High Dynamic Range Imaging: §3.6 Reinhard’s Gaussian Convolution Method</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>b56f54ff-cd69-40fd-b0fd-1e0af69a5688</md:uuid>
+</metadata>
+<content>
+<para id="id8912715">An implementation suggested by Reinhard in
+“Photographic Tone Reproduction for Digital Images,” involves
+constructing circularly symmetric Gaussians of eight varying scales
+and convolving them (via multiplication in the frequency domain for
+speed improvement) with the image luminance values, which results
+in the production of eight Gaussain-blurred versions of the image
+with different degrees of blurring.</para>
+<para id="id10381191">The equation used for the Gaussians
+is:</para>
+<para id="id10567559">
+<figure id="id10736272">
+<media id="idm6963808" alt=""><image src="../../media/Graphic1-b063.png" mime-type="image/png"/></media>
+</figure>
+</para>
+<para id="id7765551">(Reinhard et al., 4)</para>
+<para id="id10307378">The normalized error function for the
+difference between the image at one scale of blurriness and the
+next is iteratively evaluated at successive scale values, sm, where
+s = 1.6^Sm, until its absolute value exceeds the threshold of 0.05.
+The scale value one less than that causing the threshold to be
+exceeded (if sm=1 exceeds the threshold, the 1 is still kept) is
+then stored in the scale matrix, Sm(x,y). The paper provided a
+suggested threshold value of 0.05 that seemed to work well for most
+images although others were tried. The function below is evaluated
+at every pixel in the image, and a scale value is determined for
+each pixel, ranging from 1 to 8. The value for alpha1 is taken to
+be 0.3536 (approximation of 1/(2*sqrt(2))) par recommendation from
+the paper, and alpha2 is set to 1.6*alpha1 = 0.5657.</para>
+<para id="id10820438">The equation used to construct the Sm
+matrix:</para>
+<figure id="id10793949">
+<media id="idm136384" alt=""><image src="../../media/Graphic2-c064.png" mime-type="image/png"/></media>
+</figure>
+<para id="id10817500">where |V| &lt; 0.05 (Reinhard et al.,
+4).</para>
+<para id="id9331602">Phi = 8.0 and a is the key value, set to 0.18
+for most images. These values were suggested by the paper and
+adjusted to understand their effects, but phi = 8.0 was used for
+all final test images. The average luminance of the image tends to
+suggest the key value, a. In practice, it should be varied from
+about 0.09 to 0.36 (or sometimes more) for some darker or lighter
+photographs, respectively. The Vi values for i=1 and i=2, as used
+above, are calculated via convolution of the luminance values with
+the Ri Gaussians defined in the R(x,y,z) equation above. The
+equation representing this convolution is: Vi(x,y,s) = L(x,y) *
+Ri(x,y,s) (Reinhard et al., 4).</para>
+<para id="id7935386">To produce the final image, the
+formula,</para>
+<figure id="id9556561">
+<media id="idp3013520" alt=""><image src="../../media/Graphic3-83c3.png" mime-type="image/png"/></media>
+</figure>
+<para id="id9280065">is evaluated over all x and y values of
+possible image positions (Reinhard et al., 4). The algorithm
+ultimately accomplishes a greater reduction in brightness for
+regions especially bright and a greater increase in brightness for
+regions that are especially dark. For example, for a dark pixel in
+a relatively luminescent region, L(x,y) &lt; V1(x,y), therefore
+Ld(x,y) will decrease, increasing the contrast at that point. On
+the other hand, a bright pixel in a darker region will cause L(x,y)
+&gt; V1(x,y), therefore Ld(x,y) will increase, subsequently
+increasing the contrast for this case as well.</para>
+<para id="id10811965">In an effort to improve the algorithm, we
+changed the Ld equation above to</para>
+<figure id="id10151392">
+<media id="idp3313216" alt=""><image src="../../media/Graphic4-e823.png" mime-type="image/png"/></media>
+</figure>
+<para id="id10798304">where C are scaling coefficients that can
+give more weight to the brightening or darkening effect for V1
+because, with some images, the effects are not strong enough with
+our original implementation of the algorithm. This is very
+effective on some images where regions with similar sm values have
+similar brightness, and the coefficients could be determined by
+hand or by another algorithm from the sm(x,y) matrix. On more
+complex images, Sm values correlate with similar brightness only on
+local regions so C(sm(x,y)) would have to also depend on x and y
+independent of sm and therefore become, C(sm(x,y),x,y).</para>
+<para id="id10784101">Examples:</para>
+<para id="id10784105">(Photo from nine-image set in “IRIS TUTORIAL:
+Comet High Dynamic Range imagery Application to total eclipse
+processing” -- 
+<link url="http://www.astrosurf.com/buil/iris/tutorial19/doc41_us.htm">
+http://www.astrosurf.com/buil/iris/tutorial19/doc41_us.htm</link>)</para>
+<para id="id9440491">Fig. 1: Global Linear Operator:</para>
+<figure id="id8882719">
+<media id="idm5909424" alt=""><image src="../../media/Graphic5-1cbc.png" mime-type="image/png"/></media>
+</figure>
+<para id="id8691865">Fig. 2: Using original operator based on
+Reinhard paper (equivalent to C = {1,1,1,1,1,1,1,1}):</para>
+<figure id="id10766009">
+<media id="idp397056" alt=""><image src="../../media/Graphic6-6ee5.png" mime-type="image/png"/></media>
+</figure>
+<para id="id10664731">Fig. 3: Using final equation with C =
+{-2,-2,-1,4,4,4,4,4}:</para>
+<figure id="id5884253">
+<media id="idp7634464" alt=""><image src="../../media/Graphic7-4fd2.png" mime-type="image/png"/></media>
+</figure>
+<para id="id10868038">Here, setting C to something different that
+{1,1,1,1,1,1,1,1} is rather effective at pulling down the extremely
+bright window even more. It works pretty well since the high-valued
+region of Sm(x,y) corresponds to a similar sm value in the same
+(x,y) rectangular-bounded region in all color channels.</para>
+<para id="id10665025">Scale Matrix Examples (Longer wavelength
+color corresponds to higher Sm(x,y) value):</para>
+<para id="id9251640">The images below show an example of how an HDR image
+of a window scene was broken into different scale regions by the
+algorithm: dark blue = 1, light blue = 2, cyan = 3, yellow = 4,
+orange = 5, and dark red = 6.</para>
+<para id="id11049740">The Sm matrix values show how the overly
+bright window region was easily isolated with the C vector:</para>
+<para id="id10721110">Fig. 4: Red:</para>
+<para id="id10960262"/>
+<para id="id10661231">
+<figure id="id10663002">
+<media id="idp1691472" alt=""><image src="../../media/Graphic8-9669.png" mime-type="image/png"/></media>
+</figure>
+</para>
+<para id="id10791988">Fig. 5: Green:</para>
+<figure id="id10758851">
+<media id="idp233296" alt=""><image src="../../media/Graphic9-1076.png" mime-type="image/png"/></media>
+</figure>
+<para id="id10788690">Fig. 6: Blue:</para>
+<figure id="id10799470">
+<media id="idp3885344" alt=""><image src="../../media/Graphic10-51ed.png" mime-type="image/png"/></media>
+</figure>
+<para id="id8072918">Example 2:</para>
+<para id="id8072922">(Photo from three-image set taken by Robert
+Ortman in Banff National Park, Canada)</para>
+<para id="id10960424">Fig. 7: Global Linear Operator:</para>
+<figure id="id10792696">
+<media id="idp3526144" alt=""><image src="../../media/Graphic11.png" mime-type="image/png"/></media>
+</figure>
+<para id="id10664717">Fig. 8: Using original operator based on
+Reinhard paper (equivalent to C = {1,1,1,1,1,1,1,1}):</para>
+<figure id="id10304583">
+<media id="idm7331888" alt=""><image src="../../media/Graphic12.png" mime-type="image/png"/></media>
+</figure>
+<para id="id10563552">Fig. 9: Using final equation with C = {1 1 1
+1.5 4 4 4 4}:</para>
+<figure id="id10722437">
+<media id="idp2607264" alt=""><image src="../../media/Graphic13.png" mime-type="image/png"/></media>
+</figure>
+<para id="id10783916">In this case, the operator based on the paper
+renders the grass and trees part better since it increases the
+luminance in those regions relatively well, but it does worse than
+the global linear operator on the clouds: it has not decreased
+luminance nearly enough in that region. Attempting to use the C
+vector to help reduce extra cloud luminance also fails here because
+the Sm regions computed for the clouds do not correspond very well
+for across color channels. In particular, the blue channel had a
+clearly high-valued region that could have it’s brightness
+selectively reduced, but applying this equally across all color
+channels results in discoloration. Applying the increased weight of
+luminance reduction to the regions represented in yellow and orange
+below across all color channels darkens blue (the most) and red
+much more than green, leaving the green and yellow (red+green)
+patches showed above.</para>
+<para id="id8688123">The Sm matrix values clearly explain the
+discoloration:</para>
+<para id="id10820153">Red:</para>
+<para id="id10742918">
+<figure id="id10995626">
+<media id="idp4128064" alt=""><image src="../../media/Graphic14.png" mime-type="image/png"/></media>
+</figure>
+</para>
+<para id="id10758863">Green:</para>
+<para id="id8407211">
+<figure id="id10717098">
+<media id="idp3589712" alt=""><image src="../../media/Graphic15.png" mime-type="image/png"/></media>
+</figure>
+</para>
+<para id="id10820130">Blue:</para>
+<figure id="id10742476">
+<media id="idp7145472" alt=""><image src="../../media/Graphic16.png" mime-type="image/png"/></media>
+</figure>
+<para id="id10730936">In both example photos above, the operator
+based on the Reinhard paper tended to outperform the global linear
+operator in some parts and fail in others. In some cases, it can be
+easy to fix with the introduction of the C vector, but ultimately,
+there must be a better way.</para>
+</content>
+</document>

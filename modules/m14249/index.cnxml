@@ -1,0 +1,27 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Exploring High Dynamic Range Imaging: §4 Results</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>44e7b903-58d1-432a-99c8-410e93ec7ae8</md:uuid>
+</metadata>
+<content>
+<para id="id9860796">Every algorithm produces significantly
+different results at different speed expenses and different levels
+of detail degradation. The global algorithm is quick and does not
+seem to blur fine detail, but it is also the weakest at tone
+mapping, and produces images with the highest contrast or all of
+our algorithms. The adaptive gain filter has stronger compression
+of brightness values but destroys fine details in the image. The stochastic gain control sharpens the edges in the image but adds some noise as well.  The adaptive gain filter with edge detection also sharpens the edges but still destroys some of the finer details.  The convolution mapping combines the speed and detail preservation of the global mapping with the brightness compression of the adaptive gain mapping.</para>
+
+<para id="id9867923">However, the algorithms presented are still no
+match for some of the more successful tone mapping methods present
+today. The Gradient Domain High Dynamic Range Compression by
+Fattal, Lischinski, and Werman, and the Low Curvature Image
+Simplifier by Tumblin and Turk prove to have better representation
+of local contrast and overall “punch” in terms of local tonality
+and color saturation compared to our methods. Although it is
+possible to make our images look similar to the results produced by
+these methods through the use of tools such as curves and manual
+saturation adjustments in image editing software, it is impossible
+to get exactly the same visual effect of both local contrast and
+luminance compression.</para>
+</content>
+</document>

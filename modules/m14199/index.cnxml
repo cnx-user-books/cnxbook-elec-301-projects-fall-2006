@@ -1,0 +1,23 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Introduction to Speaker Identification</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>0f877d58-3a1e-4023-8321-2132e758a9c9</md:uuid>
+</metadata>
+<content>
+<section id="intro">
+<title>Introduction</title>
+<para id="id6825740">Modern-day security systems are wide-ranging and usually have multiple layers to get through before they can be properly cracked. Aside from the standard locks and deadbolts and alarm systems, there are very complex methods to protecting important material.  Many of these are methods that can allow or disallow a specific individual to access the material – a computer system has to be able to successfully detect a fingerprint, read an individual's eye patterns, or determine the true identity of a speaker. This last point is the focus of our project – speaker identification.</para>
+</section>
+<section id="summary">
+<title>Summary</title>
+<para id="id6825769">Our project aims to determine the true identity of a specific speaker.  The speaker will speak a word to the system, and the actual word itself can be any word.  The system can accept any word because it is a text-independent system, meaning there is no specified word need.  The system will determine the identity of a user by examining the vowel sounds, from the input speech signal.  The vowel sounds will be analyzed in the frequency domain, specifically by looking at the peaks, or formants, of the frequency response of the signal.  These formants will be compared with the formants of all of the group members previously stored in the database of the system.  The group member with the highest resulting value after the comparison is the one identified as the speaker by the system.  If no user reaches the set threshold value, then the system responds by saying there is no match for the given speaker.</para>
+</section>
+<section id="Terminology">
+<title>Terminology</title>
+<para id="element-701">The task our group performed is called <emphasis>speaker identification</emphasis>, and is often confused with other similar terms.  The exact definitions of some of these terms is explained below.</para>
+<list id="element-967" list-type="bulleted"><item><emphasis>Speaker recognition:</emphasis> Determining who is doing the speaking. Generally has two different applications – speaker identification and speaker verification. Also referred to as voice recognition.</item>
+	<item><emphasis>Speaker identification:</emphasis> Identifying the exact person who is speaking. The speaker is initially unknown, and must be determined after being compared to templates. There can often be a very large number of templates that are involved in identifying a speaker, as it is difficult to correctly identify a speaker.</item>
+	<item><emphasis>Speaker verification:</emphasis> Determining if the speaker is who he or she claims to be. The speaker’s voice is compared to only one template – the person who he or she is claiming to be.</item>
+	<item><emphasis>Speech recognition:</emphasis> Recognizing the actual words being said, in other words, recognizing what is being said rather than who is speaking. Often confused with voice recognition, which recognizes an individual speaker.</item></list>
+</section>
+</content>
+</document>

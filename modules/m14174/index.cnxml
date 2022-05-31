@@ -1,0 +1,62 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Pocket Change: Coin Identification</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>857dc41d-ad51-4475-8f84-7f493fa393f5</md:uuid>
+</metadata>
+<content>
+<para id="id13030512">So, now we have an FFT of the coin. What are
+we going to compare it to? A pre-created database of course! The
+database creation steps are pretty straightforward, but there are a
+number of reasons for developing a streamlined approach to
+it.</para>
+<section id="id13218581">
+<title>Database Creation</title>
+<para id="id11746242">You could create the database manually by
+taking subsets of the input picture matrix and performing the
+unwrapping on them manually. Manual database editing might be
+feasible if you only had 10 coins to recognize. However,
+considering that the United States has minted coins for all fifty
+states in addition to entries for dirty coins and different
+lighting conditions, you’ll probably want to simplify the process.
+What we did was basically take our full code and hack it off before
+the unwrapping process. The radii and centers go into a function
+that displays the image of the coin to the user. The user then
+enters in values for the metadata associated with that image. In
+our case we used heads/tails, value in USD, coin name, and
+abbreviated coin descriptor (for debugging). We created a graphical
+interface in Matlab for loading images and loading and saving
+database files.</para><figure id="element-828"><title>Coin input GUI</title>
+  <media id="idp7139776" alt=""><image src="../../media/coingui.png" mime-type="image/png"/></media>
+  <caption>The coin input GUI we developed.</caption></figure>
+</section>
+<section id="id13243209">
+<title>Comparison</title>
+<para id="id13167304">The resulting database should contain the
+metadata and the precomputed FFTs of the already unwrapped coins.
+The code then takes each input FFT and compares it to each stored
+FFT. There are many different algorithms to determine the
+“closeness” of two FFTs.</para>
+<section id="id13115395">
+<title>Dot Product</title>
+<para id="id13092496">You can normalize each line of the FFT, and
+then do a vector dot product with the corresponding line in the
+other FFT. Then you take the average value of the resulting
+one-line vector. If the two FFTs are identical, they will return a
+value of 1. Depending on how different they are, the number will be
+something between 0 and 1.</para>
+</section>
+<section id="id11089272">
+<title>Sum of Differences</title>
+<para id="id13252845">You can take the FFTs, subtract them from
+each other, take the absolute value, and sum all of the resulting
+differences. Two identical matrices will return a value of 0. If
+the matrices are at all different, the sum will be greater than
+zero.</para>
+
+</section><para id="element-631">In our implementation we found the dot
+product approach to work best, though any number of matrix
+comparison algorithms could work. Once all of the FFTs have been
+identified, they should return the metadata to be displayed to the
+user.</para>
+</section>
+</content>
+</document>

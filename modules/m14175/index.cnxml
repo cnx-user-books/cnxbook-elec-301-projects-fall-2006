@@ -1,0 +1,69 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+<title>Pocket Change: Image Acquisition</title>
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>aa3e6919-2377-4cec-900b-cee49d1ac0d3</md:uuid>
+</metadata>
+<content>
+
+<section id="overview">
+<title>Overview</title>
+<para id="id5912295">High quality images are a necessary component
+of any object recognition system. Factors such as lighting,
+background, and motion all contribute to the instability of any
+imaging environment. As soon as one of these factors changes, even
+slightly, the ability for a computer to detect an object from an
+image may be severely hampered. However, pursuing a controlled
+environment is most likely a dead-end. In the context of real world
+object recognition, environment is often not controlled and
+sometimes is rapidly changing. For this project, though, we need to
+create a special imaging environment to minimize the complexity of
+image acquisition.
+</para>
+</section>
+
+<section id="Lighting">
+<title>Lighting</title>
+<para id="id6783043">We need to create a
+semi-ideal environment in which to image the coins. The apparatus is composed of a tough black plastic milk crate, a semi-reflective
+white foam board piece, and a matte black foam board piece for the
+imaging base. It is important to create a contained system because
+it allows us to remove, to the best of our ability, the environment
+variable. Once the box is constructed, we need to determine the
+best way to light the coins. Even and consistent lighting is a
+necessity. To achieve this we need to sufficiently diffuse the
+lighting as to avoid specular highlighting. We hang the lights from
+the top of the box at an angle to the outside edges of the box.
+Doing so allows the incident light to “bounced” off the walls of
+the box thus diffusing the rays. However, we you will find this to be
+insufficient. It became apparent that using cloth, or even a milk jug, is a more effective approach. You can use any materials you have lying around.  For example, if you cut out small squares of a white undershirt and strategically place them between the lights and the coins, you can achieve a sufficient level of light diffusion. The process may be time intensive but keep tweaking until you find agreeable results.
+</para>
+</section>
+
+<figure id="element-540"><title>Image Acquisition Apparatus</title>
+  <media id="idp3274800" alt=""><image src="../../media/BoxSmall.jpg" mime-type="image/jpeg"/></media>
+  <caption>A picture of the hardware apparatus used to image the coins.</caption></figure><section id="Camera">
+<title>Camera</title>
+<para id="id11319770">The camera, a Canon PowerShot S410, suspended from the top of the
+box, is able to image the coins from a fixed distance and location
+for each take. Because we must image multiple coins at the same
+time, the camera cannot adjust its shutter speed based on the
+brightness of just one coin. Thus, if there are specular
+highlights on one coin, and not on another, our image would reflect this. Disparities among the coins, due to lighting, are unacceptable. This provides the motivation for
+taking great pains to place the lights in a manner provides even
+lighting conditions.
+</para><note id="idp3998608">While we used a Canon camera, any camera should be sufficient as long as it has the ability to take quality images.</note>
+</section>
+
+<section id="imCapSoftware">
+<title>Image Capture Software</title>
+<para id="id9784085">We need to be able to quickly capture images
+without any human intervention.  Minute changes in the angle or location of the camera might interfere with the settings in our software.  It would also remove the consistency in images we obtain by fixing the camera.  We can accomplish this easily using Canon’s Remote Capture software on the computer.  With the software, you have control
+over exposure, white balance, and ISO levels. On the
+subject of quality: it needs to be mentioned that any JPEG
+compression could result in less reliable results. Because the
+algorithms used for this project are dependent on recognizing
+the unique details of each coin, throwing out any of that information could
+have drastic effects.
+</para><note id="idm2527456">The Canon Remote Capture software comes standard with many Canon cameras.  It is available on the Canon website free of charge.</note>
+</section>
+</content>
+</document>

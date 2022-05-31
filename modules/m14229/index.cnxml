@@ -1,0 +1,23 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Contributing Authors and References</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>588256ff-621d-468b-ada1-3f871781606b</md:uuid>
+</metadata>
+  <content>
+<section id="group">
+  <title>Group Members</title><list id="Authors" list-type="bulleted"><item><emphasis>Elica V. Skorcheva</emphasis>, ECE Department, elicas@rice.edu</item>
+<item><emphasis>Jennifer Ann Gillenwater</emphasis>, ECE Department, jgillenw@rice.edu</item>
+<item><emphasis>Jacob Ryan Stinnett</emphasis>, ECE Department, jryans@rice.edu</item></list></section>
+<section id="ref">
+  <title>References</title> <list id="element-826" list-type="enumerated"><item>Mann, S.; Picard, R.W., "Video orbits of the projective group a simple approach to featureless estimation of parameters," Image Processing, IEEE Transactions on, vol. 6, no. 9, 1997.</item>
+
+<item>Lertrattanapanich, S.; Bose, N. K., "High Resolution Image Formation From Low Resolution Frames Using Delaunay Triangulation," Image Processing, IEEE Transactions on, vol. 11, no. 12, 2002.</item>
+
+<item>http://en.wikipedia.org/wiki/Delaunay_triangulation</item>
+
+<item>http://www.dcresource.com/reviews/fuji/finepix_s9000-review/</item>
+<item>http://www.redbows.co.uk/Images/fun-stuff/budget_nonflash-camera.jpg</item>
+<item>http://www.kfunigraz.ac.at/imawww/invcon/pictures/flowfield.gif</item>
+<item>http://lcavwww.epfl.ch/software/superresolution/superresolution_dataset1.tar.gz</item></list></section>
+  </content>
+  
+</document>
